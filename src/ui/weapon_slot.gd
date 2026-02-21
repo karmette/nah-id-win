@@ -5,6 +5,7 @@ extends Control
 
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var sprite: TextureRect = $Slot/Weapon
+@onready var progress: TextureProgressBar = $Slot/TextureProgressBar
 
 var temp_selected: bool = false
 signal selected_changed
@@ -18,9 +19,13 @@ func select():
 		anim.play("select")
 	else:
 		anim.play_backwards("select")
+	GlobalVar.on_weapon_cooldown = true
 
 
 func _process(_delta):
 	if selected != temp_selected:
 		selected_changed.emit()
 	temp_selected = selected
+	progress.value = GlobalVar.cd_timer * 60
+	if GlobalVar.on_weapon_cooldown == false:
+		progress.value = 0

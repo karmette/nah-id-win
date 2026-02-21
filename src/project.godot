@@ -20,6 +20,7 @@ Constants="*uid://nqp84rftkl7i"
 JsonHelper="*uid://dxfqjsc6fqdkn"
 SignalBus="*uid://braci45cwt7c4"
 SceneManager="*uid://rtyveqbrn7m3"
+GlobalVar="*uid://bcm4o2f4cfm56"
 
 [display]
 
