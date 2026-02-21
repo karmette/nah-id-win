@@ -1,3 +1,10 @@
+Sprite2D
+Camera2D
+CharacterBody2D
+TileMapLayer
+CollisionShape2D
+AnimationPlayer
+AnimatedSprite2D
 RichTextLabel
 Panel
 ColorRect

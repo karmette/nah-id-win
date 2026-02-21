@@ -1,3 +1,11 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1771639680
-icon.svg::CompressedTexture2D::7798711059875671306::1771639674::1771639681::1::::<><><>0<>0<>1e397455de10eca83db014a1497bbf1c<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+::res://::1771641845
+icon.svg::CompressedTexture2D::7798711059875671306::1771641568::1771641593::1::::<><><>0<>0<>1e397455de10eca83db014a1497bbf1c<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+::res://characters/::1771641746
+::res://characters/player/::1771641768
+player.tscn::PackedScene::6107630337422054718::1771641768::0::1::::<><><>0<>0<><>::
+::res://scenes/::1771641568
+main_game.tscn::PackedScene::7076267305175654177::1771641568::0::1::::<><><>0<>0<><>::
+::res://ui/::1771641568
+cutscene_one.tscn::PackedScene::5081934628393027325::1771641568::0::1::::<><><>0<>0<><>::
+main_menu.tscn::PackedScene::3648405853015657940::1771641568::0::1::::<><><>0<>0<><>::
