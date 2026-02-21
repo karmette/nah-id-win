@@ -30,8 +30,8 @@ window/size/viewport_height=1080
 
 folder_colors={
 "res://assets/": "orange",
+"res://assets/sprites/cheese/": "yellow",
 "res://assets/sprites/fork_sprites/": "yellow",
-"res://assets/sprites/player_sprites/": "yellow",
 "res://autoloads/": "purple",
 "res://characters/": "red",
 "res://characters/player/": "yellow",
