@@ -4,8 +4,8 @@ extends CharacterBody2D
 @onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 @onready var hit_particles: GPUParticles2D = $HitParticles
 
-@export var health = 15
-@export var knockback_force = 300
+@export var health = 20
+@export var knockback_force = 750
 @export var knockback_decay = 800
 
 var knockback_velocity: Vector2 = Vector2.ZERO
@@ -171,10 +171,13 @@ func cohesion() -> Vector2:
 		return desired - velocity
 	return Vector2.ZERO
 
-func take_damage(amount: int, direction: Vector2):
+func take_damage(amount: int, direction: Vector2, force):
 	hit_particles.rotation = direction.angle()
 	hit_particles.restart()
 	sprite_2d.pause()
 	animation_player.play("take_damage")
 	health -= amount
-	knockback_velocity = direction * knockback_force #sets knockback
+	take_knockback(direction, force)
+	
+func take_knockback(direction: Vector2, force:int):
+	knockback_velocity = direction * force #sets knockback
