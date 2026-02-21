@@ -1,6 +1,47 @@
 extends Panel
 
-@onready var text: RichTextLabel = $DialogueText
+@onready var text_label: RichTextLabel = $DialogueText
+var timer: Timer
 
-func dialogue_sequence():
-	pass
+var letter_time: float = 0.03
+var space_time: float = 0.06
+var puncuation_time: float = 0.2
+
+signal dialogue_finished # may replace?
+
+func _ready() -> void:
+	timer = Timer.new()
+	self.add_child.call_deferred(timer)
+
+func signal_connect():
+	timer.timeout.connect(_on_letter_display_timer_timeout)
+	SignalBus.start_dialogue.connect(dialogue_sequence)
+
+func _unhandled_key_input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("ui_accept"):
+		# emit the Timer's timeout signal so awaiting code resumes
+		timer.emit_signal("timeout")
+
+func dialogue_sequence(c: String):
+	var diag = JsonHelper.parse_json(Constants.DIALOG.get(c)).data.nodes
+	for line in diag:
+		text_label.visible_characters = 0
+		text_label.text = line.text
+		_display_letter()
+		await dialogue_finished
+
+func _display_letter():
+	text_label.visible_characters += 1
+	if text_label.visible_characters == text_label.text.length():
+		dialogue_finished.emit()
+		return
+	match text_label.text[text_label.visible_characters]:
+		"!", ".", ",", "?":
+			timer.start(puncuation_time)
+		" ":
+			timer.start(space_time)
+		_:
+			timer.start(letter_time)
+
+func _on_letter_display_timer_timeout() -> void:
+	_display_letter()

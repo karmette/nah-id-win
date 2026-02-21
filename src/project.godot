@@ -14,6 +14,13 @@ config/name="nah-id-win"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Constants="*uid://nqp84rftkl7i"
+JsonHelper="*uid://dxfqjsc6fqdkn"
+SignalBus="*uid://braci45cwt7c4"
+SceneManager="*uid://rtyveqbrn7m3"
+
 [display]
 
 window/size/viewport_width=1920
@@ -22,8 +29,12 @@ window/size/viewport_height=1080
 [file_customization]
 
 folder_colors={
+"res://assets/": "orange",
+"res://autoloads/": "purple",
 "res://characters/": "red",
-"res://characters/player/": "yellow"
+"res://characters/player/": "yellow",
+"res://scenes/": "blue",
+"res://ui/": "green"
 }
 
 [input]
