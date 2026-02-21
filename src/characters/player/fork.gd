@@ -22,3 +22,9 @@ func attack():
 func emit_attacking(state: bool):
 	SignalBus.toggle_attacking.emit(state)
 	
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	var enemy = area.get_parent()
+
+	if enemy.has_method("take_damage"):
+		var direction = (enemy.global_position - global_position).normalized()
+		enemy.take_damage(damage, direction)
