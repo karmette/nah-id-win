@@ -1,8 +1,9 @@
 extends CharacterBody2D
 @onready var cheese: AnimatedSprite2D = $Cheese
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @export var speed = 400
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+var health = 100
 
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")

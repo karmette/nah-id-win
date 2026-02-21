@@ -169,7 +169,7 @@ root_node = NodePath("../Cheese")
 libraries/ = SubResource("AnimationLibrary_icpky")
 autoplay = &"idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=504738147]
+[node name="WallCollision" type="CollisionShape2D" parent="." unique_id=504738147]
 position = Vector2(0, 14.5)
 shape = SubResource("RectangleShape2D_508ok")
 
