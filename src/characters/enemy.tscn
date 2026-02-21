@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://d2mn8lr83u0gb" path="res://characters/enemy.gd" id="1_nhupr"]
 [ext_resource type="Shader" uid="uid://dpxkjrfwngt8v" path="res://characters/damage_flash.gdshader" id="2_1ohc2"]
 [ext_resource type="Texture2D" uid="uid://7xonakugoerl" path="res://assets/sprites/simple rat/idle rat.png" id="3_1ohc2"]
+[ext_resource type="Texture2D" uid="uid://btm08sl4cupxg" path="res://assets/particles/hit_effect.png" id="4_ggbst"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ggbst"]
 shader = ExtResource("2_1ohc2")
@@ -78,12 +79,44 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0, 1.0, 0.0]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u8tuc"]
 _data = {
 &"RESET": SubResource("Animation_1ohc2"),
 &"take_damage": SubResource("Animation_toq4n")
 }
+
+[sub_resource type="Curve" id="Curve_ggbst"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.17673385), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_toq4n"]
+curve = SubResource("Curve_ggbst")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1ohc2"]
+lifetime_randomness = 0.2
+angle_min = -513.2
+angle_max = 720.0
+spread = 51.292
+initial_velocity_min = 297.1
+initial_velocity_max = 297.1
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -100.0
+linear_accel_max = -100.0
+scale_min = 1.55
+scale_max = 2.1
+scale_curve = SubResource("CurveTexture_toq4n")
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1223147141 groups=["enemies"]]
 script = ExtResource("1_nhupr")
@@ -93,7 +126,7 @@ material = SubResource("ShaderMaterial_ggbst")
 sprite_frames = SubResource("SpriteFrames_ki21s")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.75509846
+frame_progress = 0.18070574
 
 [node name="ForwardRay" type="RayCast2D" parent="." unique_id=464449794]
 target_position = Vector2(0, 32)
@@ -109,5 +142,15 @@ shape = SubResource("RectangleShape2D_1ohc2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1574592315]
 libraries/ = SubResource("AnimationLibrary_u8tuc")
+
+[node name="HitParticles" type="GPUParticles2D" parent="." unique_id=1776158011]
+emitting = false
+amount = 6
+texture = ExtResource("4_ggbst")
+lifetime = 0.25
+one_shot = true
+explosiveness = 1.0
+randomness = 0.65
+process_material = SubResource("ParticleProcessMaterial_1ohc2")
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

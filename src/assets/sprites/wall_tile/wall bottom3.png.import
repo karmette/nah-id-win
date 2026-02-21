@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0lij8k2hd7xf"
-path="res://.godot/imported/wall5.png-215a08cbff454f227dff936b48740766.ctex"
+uid="uid://ny28ngwwmpig"
+path="res://.godot/imported/wall bottom3.png-7b05ccf3608c510a106b2938998b9ef4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/wall_tile/wall5.png"
-dest_files=["res://.godot/imported/wall5.png-215a08cbff454f227dff936b48740766.ctex"]
+source_file="res://assets/sprites/wall_tile/wall bottom3.png"
+dest_files=["res://.godot/imported/wall bottom3.png-7b05ccf3608c510a106b2938998b9ef4.ctex"]
 
 [params]
 

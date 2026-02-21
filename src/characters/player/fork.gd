@@ -12,11 +12,12 @@ func _on_attacking_toggled(state: bool):
 	on_cooldown = state
 
 func _input(event):
-	if Input.is_action_pressed("attack") and not on_cooldown:
-		attack()
-
-func attack():
-	animation_player.play("swing")
+	if Input.is_action_just_pressed("swing") and not on_cooldown:
+		animation_player.play("swing")
+	if Input.is_action_pressed("thrust") and not on_cooldown:
+		animation_player.play("charge_thrust")
+	if Input.is_action_just_released("thrust") and not on_cooldown:
+		animation_player.play("thrust")
 
 #Signals
 func emit_attacking(state: bool):
