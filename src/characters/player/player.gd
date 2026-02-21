@@ -5,15 +5,17 @@ extends CharacterBody2D
 @export var speed = 400
 var health = 100
 var dash_velocity: Vector2 = Vector2.ZERO
-var dash_decay = 2000
-var dash_force = 800
+var dash_decay = 1
+var dash_force = 1
 
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * speed
 
-func dash(direction):
-	dash_velocity = direction * dash_force #sets knockback
+func dash(direction, force, decay):
+	dash_force = force
+	dash_decay = decay
+	dash_velocity += direction * dash_force #sets knockback
 
 func _physics_process(delta):
 	get_input()
