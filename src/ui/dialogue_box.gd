@@ -1,6 +1,6 @@
-extends Panel
+extends Control
 
-@onready var text_label: RichTextLabel = $DialogueText
+@onready var text_label: RichTextLabel = $DialogueBox/DialogueText
 var timer: Timer
 
 var letter_time: float = 0.03
@@ -10,6 +10,7 @@ var puncuation_time: float = 0.2
 signal dialogue_finished # may replace?
 
 func _ready() -> void:
+	self.visible = false
 	timer = Timer.new()
 	self.add_child.call_deferred(timer)
 
@@ -23,12 +24,14 @@ func _unhandled_key_input(_event: InputEvent) -> void:
 		timer.emit_signal("timeout")
 
 func dialogue_sequence(c: String):
+	self.visible = true
 	var diag = JsonHelper.parse_json(Constants.DIALOG.get(c)).data.nodes
 	for line in diag:
-		text_label.visible_characters = 0
+		text_label.visible_characters = -1
 		text_label.text = line.text
 		_display_letter()
 		await dialogue_finished
+	self.visible = false
 
 func _display_letter():
 	text_label.visible_characters += 1

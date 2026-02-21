@@ -19,6 +19,5 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Panel" parent="." unique_id=361064559 instance=ExtResource("1_otcrv")]
-layout_mode = 0
-anchors_preset = 0
+[node name="Dialogue" parent="." unique_id=494282932 instance=ExtResource("1_otcrv")]
+layout_mode = 1
