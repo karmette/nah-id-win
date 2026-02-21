@@ -1,5 +1,5 @@
 extends Node2D
-@export var ring_radius: float = 200.0
+@export var ring_radius: float = 250.0
 
 var current_level: Node2D
 
@@ -15,10 +15,10 @@ func load_level(level_name: String):
 	var scene: PackedScene = Constants.LEVELS[level_name]
 	current_level = scene.instantiate()   # this is a Node
 	add_child(current_level)
-	begin_wave()
+	begin_wave(2)
 
 func begin_wave(rate: float = 1.0, scale: float = 1.0, easy: bool = true):
-	var enemy_count: int = rate*10
+	var enemy_count: int = int(rate*5)
 	var angle_step: float = (2 * PI) / enemy_count
 
 	for i in range(enemy_count):
@@ -31,7 +31,5 @@ func begin_wave(rate: float = 1.0, scale: float = 1.0, easy: bool = true):
 		var enemy: Node2D = enemy_scene.instantiate()
 		enemy.global_position = global_position + spawn_position
 		enemy.scale = Vector2(1.5, 1.5)
+		enemy.health *= scale
 		add_child(enemy)
-		#add_child(enemy)
-		
-		#enemy.position = spawn_position

@@ -12,3 +12,7 @@ const ENEMIES_EASY: Dictionary[String, PackedScene] = {
 	"small_rat":preload("uid://dqfe3qn5ji0i5"),
 	#"zombie_rat":""
 }
+
+const WEAPONS: Dictionary[String, PackedScene] = {
+	"fork":preload("uid://cgit7jq7kxjxs")
+}
