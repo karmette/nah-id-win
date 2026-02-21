@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://ciw5orhevh65f"]
 
 [ext_resource type="Script" uid="uid://b12glydcfu4o3" path="res://ui/weapon_switcher.gd" id="1_tl3bd"]
-[ext_resource type="PackedScene" uid="uid://hpt5itklu07h" path="res://ui/weapon_slot.tscn" id="2_xll21"]
 
 [node name="WeaponSwitcher" type="Control" unique_id=460980050]
 layout_mode = 3
@@ -12,10 +11,5 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tl3bd")
 
-[node name="weapon_slot" parent="." unique_id=1770583328 instance=ExtResource("2_xll21")]
-layout_mode = 0
-offset_left = 44.0
-offset_top = 996.0
-offset_right = 92.0
-offset_bottom = 1044.0
-scale = Vector2(3.6303627, 3.6303627)
+[node name="SwitchCooldown" type="Timer" parent="." unique_id=1371882036]
+wait_time = 0.3
