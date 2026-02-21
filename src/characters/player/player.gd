@@ -15,7 +15,6 @@ func _physics_process(delta):
 		# Add your code here for when the character is moving (e.g., play walk animation)
 		if animation_player.current_animation != "moving":
 			animation_player.play("moving")
-		print("ASDASDdw")
 	else:
 		# Add your code here for when the character is not moving (e.g., play idle animation)
 		if animation_player.current_animation != "idle":

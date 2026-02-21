@@ -39,6 +39,11 @@ folder_colors={
 "res://ui/": "green"
 }
 
+[global_group]
+
+enemies=""
+player=""
+
 [input]
 
 right={

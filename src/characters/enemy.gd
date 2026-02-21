@@ -1,47 +1,150 @@
 extends CharacterBody2D
 
-@export var speed: float = 150.0
-@export var steer_force: float = 600.0
-@export var avoid_force: float = 900.0
+# ========================
+# Movement tuning
+# ========================
+
+@export var max_speed: float = 140.0
+@export var max_force: float = 900.0
 @export var look_ahead: float = 60.0
+
+# Flocking weights
+@export var seek_weight: float = 1.0
+@export var avoid_weight: float = 2.0
+@export var separation_weight: float = 1.8
+@export var alignment_weight: float = 0.6
+@export var cohesion_weight: float = 0.5
+
+# Flocking radii
+@export var separation_radius: float = 35.0
+@export var neighbor_radius: float = 80.0
 var player: Node2D
 
 @onready var forward_ray: RayCast2D = $ForwardRay
 
 
 func _ready():
+	add_to_group("enemies")
 	player = get_tree().get_first_node_in_group("player")
 
 
 func _physics_process(delta):
-	if not player:
+	if player == null:
 		return
 
-	var steering = Vector2.ZERO
+	var steering := Vector2.ZERO
 
-	# SEEK FORCE
-	steering += seek()
+	steering += seek() * seek_weight
+	steering += avoid_obstacles() * avoid_weight
+	steering += separation() * separation_weight
+	steering += alignment() * alignment_weight
+	steering += cohesion() * cohesion_weight
 
-	# OBSTACLE AVOIDANCE
-	steering += avoid_obstacles()
+	steering = steering.limit_length(max_force)
 
-	# Apply steering
 	velocity += steering * delta
-	velocity = velocity.limit_length(speed)
+	velocity = velocity.limit_length(max_speed)
 
 	move_and_slide()
-	
+
+	if velocity.length() > 5:
+		rotation = velocity.angle()
+
+
+# ========================
+# SEEK PLAYER
+# ========================
 
 func seek() -> Vector2:
-	var desired_velocity = (player.global_position - global_position).normalized() * speed
-	return (desired_velocity - velocity).limit_length(steer_force)
+	var desired = (player.global_position - global_position).normalized() * max_speed
+	return desired - velocity
 
+
+# ========================
+# OBSTACLE AVOIDANCE
+# ========================
 
 func avoid_obstacles() -> Vector2:
-	forward_ray.target_position = velocity.normalized() * look_ahead
-	
+	var forward_dir = velocity
+	if forward_dir.length() < 5:
+		forward_dir = (player.global_position - global_position)
+
+	forward_ray.target_position = forward_dir.normalized() * look_ahead
+
 	if forward_ray.is_colliding():
 		var normal = forward_ray.get_collision_normal()
-		return normal * avoid_force
-	
+		return normal * max_force
+
+	return Vector2.ZERO
+
+
+# ========================
+# SEPARATION
+# ========================
+
+func separation() -> Vector2:
+	var force := Vector2.ZERO
+	var count := 0
+
+	for other in get_tree().get_nodes_in_group("enemies"):
+		if other == self:
+			continue
+
+		var dist = global_position.distance_to(other.global_position)
+		if dist < separation_radius and dist > 0:
+			force += (global_position - other.global_position).normalized() / dist
+			count += 1
+
+	if count > 0:
+		force /= count
+
+	return force
+
+
+# ========================
+# ALIGNMENT
+# ========================
+
+func alignment() -> Vector2:
+	var avg_velocity := Vector2.ZERO
+	var count := 0
+
+	for other in get_tree().get_nodes_in_group("enemies"):
+		if other == self:
+			continue
+
+		var dist = global_position.distance_to(other.global_position)
+		if dist < neighbor_radius:
+			avg_velocity += other.velocity
+			count += 1
+
+	if count > 0:
+		avg_velocity /= count
+		return (avg_velocity - velocity)
+
+	return Vector2.ZERO
+
+
+# ========================
+# COHESION
+# ========================
+
+func cohesion() -> Vector2:
+	var center := Vector2.ZERO
+	var count := 0
+
+	for other in get_tree().get_nodes_in_group("enemies"):
+		if other == self:
+			continue
+
+		var dist = global_position.distance_to(other.global_position)
+		if dist < neighbor_radius:
+			center += other.global_position
+			count += 1
+
+	if count > 0:
+		center /= count
+		var desired = (center - global_position).normalized() * max_speed
+		return desired - velocity
+
 	return Vector2.ZERO
