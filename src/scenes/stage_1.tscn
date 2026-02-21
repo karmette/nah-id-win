@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://ear4a7hnc7gg"]
+
+[ext_resource type="Texture2D" uid="uid://djd0vqkksriww" path="res://icon.svg" id="1_usctx"]
+[ext_resource type="PackedScene" uid="uid://ctat1q5phnnvi" path="res://characters/player/player.tscn" id="1_vrt2j"]
+
+[node name="stage1" type="Node2D" unique_id=319483865]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1344801444]
+scale = Vector2(7.5625, 7.75)
+texture = ExtResource("1_usctx")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1333397496]
+
+[node name="Player" parent="." unique_id=722093044 instance=ExtResource("1_vrt2j")]
