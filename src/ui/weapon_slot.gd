@@ -29,3 +29,4 @@ func _process(_delta):
 	progress.value = GlobalVar.cd_timer * 60
 	if GlobalVar.on_weapon_cooldown == false:
 		progress.value = 0
+		GlobalVar.cd_timer = 0
