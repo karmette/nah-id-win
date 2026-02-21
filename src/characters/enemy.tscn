@@ -118,7 +118,12 @@ scale_min = 1.55
 scale_max = 2.1
 scale_curve = SubResource("CurveTexture_toq4n")
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ggbst"]
+height = 57.99315
+
 [node name="Enemy" type="CharacterBody2D" unique_id=1223147141 groups=["enemies"]]
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("1_nhupr")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=2123982186]
@@ -152,5 +157,10 @@ one_shot = true
 explosiveness = 1.0
 randomness = 0.65
 process_material = SubResource("ParticleProcessMaterial_1ohc2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2071975691]
+position = Vector2(0, 9)
+rotation = 1.5861676
+shape = SubResource("CapsuleShape2D_ggbst")
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
