@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var animation_player: AnimationPlayer = $ForkSprite/AnimationPlayer
 var on_cooldown = false
+@onready var fork_sprite: Sprite2D = $ForkSprite
 
 func _ready():
 	SignalBus.toggle_attacking.connect(_on_attacking_toggled)
@@ -19,3 +20,4 @@ func attack():
 #Signals
 func emit_attacking(state: bool):
 	SignalBus.toggle_attacking.emit(state)
+	

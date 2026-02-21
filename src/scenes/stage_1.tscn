@@ -1,14 +1,33 @@
-[gd_scene format=3 uid="uid://ear4a7hnc7gg"]
+[gd_scene format=4 uid="uid://ear4a7hnc7gg"]
 
-[ext_resource type="Texture2D" uid="uid://djd0vqkksriww" path="res://icon.svg" id="1_usctx"]
 [ext_resource type="PackedScene" uid="uid://ctat1q5phnnvi" path="res://characters/player/player.tscn" id="1_vrt2j"]
+[ext_resource type="Texture2D" uid="uid://6d15wr44urk5" path="res://assets/sprites/tile/tile1.png" id="2_e77qm"]
+[ext_resource type="Texture2D" uid="uid://buvuc8lkx17vy" path="res://assets/sprites/tile/tile2.png" id="3_kx1yv"]
+[ext_resource type="PackedScene" path="res://characters/enemy.tscn" id="4_e77qm"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u47qm"]
+texture = ExtResource("2_e77qm")
+texture_region_size = Vector2i(48, 48)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e77qm"]
+texture = ExtResource("3_kx1yv")
+texture_region_size = Vector2i(48, 48)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_bnu0w"]
+tile_size = Vector2i(48, 48)
+sources/4 = SubResource("TileSetAtlasSource_u47qm")
+sources/5 = SubResource("TileSetAtlasSource_e77qm")
 
 [node name="stage1" type="Node2D" unique_id=319483865]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1344801444]
-scale = Vector2(7.5625, 7.75)
-texture = ExtResource("1_usctx")
-
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1333397496]
+z_index = -2
+tile_map_data = PackedByteArray("AAD/////BAAAAAAAAAAAAP//BAAAAAAAAAD7//3/BAAAAAAAAAD7//7/BAAAAAAAAAD7////BAAAAAAAAAD7/wAABAAAAAAAAAD7/wEABAAAAAAAAAD8/wEABAAAAAAAAAD8/wIABAAAAAAAAAD9/wIABQAAAAAAAAD+/wIABQAAAAAAAAD+/wMABQAAAAAAAAD//wMABQAAAAAAAAAAAAMABQAAAAAAAAABAAMABQAAAAAAAAABAAQABAAAAAAAAAACAAQABAAAAAAAAAACAAMABQAAAAAAAAADAAMABQAAAAAAAAADAAIABQAAAAAAAAAEAAIABAAAAAAAAAAEAAEABAAAAAAAAAAEAAAABQAAAAAAAAAEAP//BAAAAAAAAAAEAP7/BAAAAAAAAAAEAP3/BAAAAAAAAAADAP3/BAAAAAAAAAADAPz/BAAAAAAAAAACAPz/BAAAAAAAAAABAPz/BAAAAAAAAAD8//3/BAAAAAAAAAD8//7/BQAAAAAAAAD8////BQAAAAAAAAD8/wAABAAAAAAAAAD9/wAABQAAAAAAAAD9/wEABAAAAAAAAAD+/wAABAAAAAAAAAD+/wEABAAAAAAAAAD//wEABAAAAAAAAAD//wIABQAAAAAAAAABAP7/BQAAAAAAAAABAP//BAAAAAAAAAACAP//BAAAAAAAAAADAP//BQAAAAAAAAADAAAABQAAAAAAAAADAAEABQAAAAAAAAACAAEABQAAAAAAAAACAAAABAAAAAAAAAD+//7/BAAAAAAAAAD9//7/BQAAAAAAAAD9//3/BQAAAAAAAAD+//3/BAAAAAAAAAD7/wIABAAAAAAAAAD8/wMABAAAAAAAAAD9/wMABAAAAAAAAAAAAAIABQAAAAAAAAABAAIABQAAAAAAAAACAAIABAAAAAAAAAABAAEABAAAAAAAAAABAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAAAEABAAAAAAAAAACAP7/BQAAAAAAAAACAP3/BAAAAAAAAAAAAPz/BAAAAAAAAAD///z/BAAAAAAAAAD+//z/BAAAAAAAAAD+////BAAAAAAAAAAAAP7/BAAAAAAAAAABAP3/BQAAAAAAAAAAAP3/BQAAAAAAAAD///3/BAAAAAAAAAD///7/BAAAAAAAAAADAP7/BQAAAAAAAAD9////BAAAAAAAAAA=")
+tile_set = SubResource("TileSet_bnu0w")
 
 [node name="Player" parent="." unique_id=722093044 instance=ExtResource("1_vrt2j")]
+scale = Vector2(0.73741436, 0.73741436)
+
+[node name="Enemy" parent="." unique_id=1223147141 instance=ExtResource("4_e77qm")]

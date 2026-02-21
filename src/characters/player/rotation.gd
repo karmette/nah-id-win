@@ -10,6 +10,12 @@ func _on_attacking_toggled(state: bool):
 
 
 func _process(delta):
-	# Make the pivot node look at the mouse
+	var mouse_position = get_global_mouse_position() # Get mouse world position
+	
 	if is_following:
-		look_at(get_global_mouse_position())
+		look_at(mouse_position)
+		
+	if mouse_position.x > self.global_position.x and is_following:
+		self.scale.y = 1 
+	elif mouse_position.x < self.global_position.x and is_following:
+		self.scale.y = -1

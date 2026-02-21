@@ -1,25 +1,10 @@
 [gd_scene format=3 uid="uid://cgit7jq7kxjxs"]
 
 [ext_resource type="Script" uid="uid://djn6cpmrrqq7y" path="res://characters/player/fork.gd" id="1_4xibx"]
-[ext_resource type="Texture2D" uid="uid://bwxnoujghdyay" path="res://assets/sprites/fork_sprites/fork.png" id="2_ls71b"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5dc8e"]
-atlas = ExtResource("2_ls71b")
-region = Rect2(0, 0, 237, 86)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ixbpm"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5dc8e")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}]
+[ext_resource type="Texture2D" uid="uid://dgop0rkdkfmt6" path="res://assets/sprites/fork_sprites/fork.png" id="2_ls71b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_exd8k"]
-size = Vector2(234.43362, 84.95398)
+size = Vector2(59.510105, 11.606144)
 
 [sub_resource type="Animation" id="Animation_5dc8e"]
 length = 0.001
@@ -49,7 +34,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.15, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [-0.41015238, 0.41015238, 0.0]
+"values": [-0.9075712, 0.9075712, 0.0]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -78,18 +63,18 @@ _data = {
 [node name="Fork" type="Node2D" unique_id=685591835]
 script = ExtResource("1_4xibx")
 
-[node name="ForkSprite" type="AnimatedSprite2D" parent="." unique_id=1831679930]
-position = Vector2(110.71156, 0)
+[node name="ForkSprite" type="Sprite2D" parent="." unique_id=474383508]
+texture_filter = 1
+position = Vector2(21.999998, -3.9999998)
 scale = Vector2(0.55452794, 0.6892902)
-sprite_frames = SubResource("SpriteFrames_ixbpm")
-animation = &"idle"
+texture = ExtResource("2_ls71b")
 
 [node name="Area2D" type="Area2D" parent="ForkSprite" unique_id=1375079425]
 position = Vector2(-199.65012, 0)
 scale = Vector2(1.8033355, 1.4507678)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ForkSprite/Area2D" unique_id=373853711]
-position = Vector2(110.71156, 0)
+position = Vector2(112.2116, 3.9999998)
 scale = Vector2(0.55452794, 0.68929017)
 shape = SubResource("RectangleShape2D_exd8k")
 
