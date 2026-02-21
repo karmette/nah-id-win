@@ -3,6 +3,10 @@ extends CharacterBody2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @export var health = 15
+@export var knockback_force = 300
+@export var knockback_decay = 800
+
+var knockback_velocity: Vector2 = Vector2.ZERO
 
 # ========================
 # Movement tuning
@@ -37,19 +41,25 @@ func _physics_process(delta):
 	if player == null:
 		return
 
-	var steering := Vector2.ZERO
-
-	steering += seek() * seek_weight
-	steering += avoid_obstacles() * avoid_weight
-	steering += separation() * separation_weight
-	steering += alignment() * alignment_weight
-	steering += cohesion() * cohesion_weight
-
-	steering = steering.limit_length(max_force)
-
-	velocity += steering * delta
-	velocity = velocity.limit_length(max_speed)
-
+	# Apply knockback first
+	if knockback_velocity.length() > 0:
+		velocity = knockback_velocity
+		knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_decay * delta)
+	else:
+		# Normal movement logic here
+		var steering := Vector2.ZERO
+		
+		steering += seek() * seek_weight
+		steering += avoid_obstacles() * avoid_weight
+		steering += separation() * separation_weight
+		steering += alignment() * alignment_weight
+		steering += cohesion() * cohesion_weight
+		
+		steering = steering.limit_length(max_force)
+		
+		velocity += steering * delta
+		velocity = velocity.limit_length(max_speed)
+		
 	move_and_slide()
 
 	# if velocity.length() > 5:
@@ -153,12 +163,8 @@ func cohesion() -> Vector2:
 		return desired - velocity
 	return Vector2.ZERO
 
-
-func _on_hurtbox_area_entered(area: Area2D) -> void:
-	var parent_node = area.get_parent() 
-	if parent_node.name == "ForkSprite":
-		take_damage(5)
-
-func take_damage(amount: int):
+func take_damage(amount: int, direction: Vector2):
 	animation_player.play("take_damage")
 	health -= amount
+	knockback_velocity = direction * knockback_force #sets knockback
+	print("ASDSA")

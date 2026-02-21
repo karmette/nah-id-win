@@ -32,3 +32,16 @@ scale = Vector2(0.73741436, 0.73741436)
 
 [node name="Enemy" parent="." unique_id=1223147141 instance=ExtResource("4_e77qm")]
 position = Vector2(-150, 0)
+health = 15
+knockback_force = 300
+knockback_decay = 800
+max_speed = 140.0
+max_force = 900.0
+look_ahead = 60.0
+seek_weight = 1.0
+avoid_weight = 2.0
+separation_weight = 1.8
+alignment_weight = 0.6
+cohesion_weight = 0.5
+separation_radius = 35.0
+neighbor_radius = 80.0

@@ -54,6 +54,19 @@ _data = {
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1223147141 groups=["enemies"]]
 script = ExtResource("1_nhupr")
+health = null
+knockback_force = null
+knockback_decay = null
+max_speed = null
+max_force = null
+look_ahead = null
+seek_weight = null
+avoid_weight = null
+separation_weight = null
+alignment_weight = null
+cohesion_weight = null
+separation_radius = null
+neighbor_radius = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1740113536]
 material = SubResource("ShaderMaterial_ggbst")
