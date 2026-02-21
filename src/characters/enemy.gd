@@ -1,10 +1,12 @@
 extends CharacterBody2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 
 @export var health = 15
 @export var knockback_force = 300
 @export var knockback_decay = 800
+
 
 var knockback_velocity: Vector2 = Vector2.ZERO
 
@@ -72,6 +74,10 @@ func _physics_process(delta):
 
 func seek() -> Vector2:
 	var desired = (player.global_position - global_position).normalized() * max_speed
+	if desired.x < 0:
+		sprite_2d.flip_h = false
+	elif desired.x > 0:
+		sprite_2d.flip_h = true
 	return desired - velocity
 
 

@@ -1,19 +1,52 @@
 [gd_scene format=3 uid="uid://dplolwanxfpr8"]
 
 [ext_resource type="Script" uid="uid://d2mn8lr83u0gb" path="res://characters/enemy.gd" id="1_nhupr"]
-[ext_resource type="Texture2D" uid="uid://djd0vqkksriww" path="res://icon.svg" id="1_wa0eo"]
 [ext_resource type="Shader" uid="uid://dpxkjrfwngt8v" path="res://characters/damage_flash.gdshader" id="2_1ohc2"]
+[ext_resource type="Texture2D" uid="uid://7xonakugoerl" path="res://assets/sprites/simple rat/idle rat.png" id="3_1ohc2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ggbst"]
 shader = ExtResource("2_1ohc2")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_value = 0.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nhupr"]
-size = Vector2(118, 115)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggbst"]
+atlas = ExtResource("3_1ohc2")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_toq4n"]
+atlas = ExtResource("3_1ohc2")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8tuc"]
+atlas = ExtResource("3_1ohc2")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f76jb"]
+atlas = ExtResource("3_1ohc2")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ki21s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ggbst")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_toq4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8tuc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f76jb")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ohc2"]
-size = Vector2(128, 128)
+size = Vector2(74, 27)
 
 [sub_resource type="Animation" id="Animation_1ohc2"]
 length = 0.001
@@ -54,37 +87,24 @@ _data = {
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1223147141 groups=["enemies"]]
 script = ExtResource("1_nhupr")
-health = null
-knockback_force = null
-knockback_decay = null
-max_speed = null
-max_force = null
-look_ahead = null
-seek_weight = null
-avoid_weight = null
-separation_weight = null
-alignment_weight = null
-cohesion_weight = null
-separation_radius = null
-neighbor_radius = null
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1740113536]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=2123982186]
 material = SubResource("ShaderMaterial_ggbst")
-texture = ExtResource("1_wa0eo")
-
-[node name="WallCollision" type="CollisionShape2D" parent="." unique_id=1923033875]
-visible = false
-position = Vector2(0, -1.5)
-shape = SubResource("RectangleShape2D_nhupr")
+sprite_frames = SubResource("SpriteFrames_ki21s")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.75509846
 
 [node name="ForwardRay" type="RayCast2D" parent="." unique_id=464449794]
+target_position = Vector2(0, 32)
+collide_with_bodies = false
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=856572981]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=178788126]
-visible = false
+position = Vector2(3, 10.5)
 shape = SubResource("RectangleShape2D_1ohc2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1574592315]
