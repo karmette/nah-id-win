@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dplolwanxfpr8"]
+[gd_scene format=3 uid="uid://dqfe3qn5ji0i5"]
 
 [ext_resource type="Script" uid="uid://d2mn8lr83u0gb" path="res://characters/enemy.gd" id="1_nhupr"]
 [ext_resource type="Shader" uid="uid://dpxkjrfwngt8v" path="res://characters/damage_flash.gdshader" id="2_1ohc2"]
