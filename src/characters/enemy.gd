@@ -8,7 +8,6 @@ extends CharacterBody2D
 @export var knockback_force = 300
 @export var knockback_decay = 800
 
-
 var knockback_velocity: Vector2 = Vector2.ZERO
 
 # ========================

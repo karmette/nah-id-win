@@ -4,14 +4,27 @@ extends CharacterBody2D
 
 @export var speed = 400
 var health = 100
+var dash_velocity: Vector2 = Vector2.ZERO
+var dash_decay = 2000
+var dash_force = 800
 
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * speed
 
+func dash(direction):
+	dash_velocity = direction * dash_force #sets knockback
 
 func _physics_process(delta):
 	get_input()
+	
+	if dash_velocity.length() > 0:
+		velocity = dash_velocity
+		dash_velocity = dash_velocity.move_toward(Vector2.ZERO, dash_decay * delta)
+	else:
+		# Normal movement logic here 
+		get_input()
+		
 	move_and_slide()
 	
 	if velocity.length() > 0:
