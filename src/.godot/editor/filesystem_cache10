@@ -1,3 +1,12 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1771639680
+::res://::1771641766
 icon.svg::CompressedTexture2D::7798711059875671306::1771639674::1771639681::1::::<><><>0<>0<>1e397455de10eca83db014a1497bbf1c<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+::res://assets/::1771641754
+::res://assets/fonts/::1771641755
+VCR_OSD_MONO_1.001.ttf::FontFile::4749368878051773527::1771641755::1771641773::1::::<><><>0<>0<>e215ceaf7f4acd60bf07e5c934fe9f48<>res://.godot/imported/VCR_OSD_MONO_1.001.ttf-856c41b5beb75e8fa3ccb5c59022acc8.fontdata::
+::res://scenes/::1771640085
+main_game.tscn::PackedScene::7076267305175654177::1771640085::0::1::::<><><>0<>0<><>::
+::res://ui/::1771641618
+main_menu.tscn::PackedScene::3648405853015657940::1771641191::0::1::::<><><>0<>0<><>::
+cutscene_one.tscn::PackedScene::5081934628393027325::1771641532::0::1::::<><><>0<>0<><>::
+dialogue_box.tscn::PackedScene::6773014179853806790::1771641618::0::1::::<><><>0<>0<><>::

@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://c3q5s3oebia8u"]
+
+[ext_resource type="FontFile" uid="uid://b8wvn8y1nwjdn" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="1_2ix3t"]
+
+[node name="DialogueBox" type="Panel" unique_id=361064559]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = -302.0
+offset_right = -52.0
+offset_bottom = -51.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="DialogueText" type="RichTextLabel" parent="." unique_id=1992518486]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -580.0
+offset_top = -106.5
+offset_right = 862.0
+offset_bottom = 106.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_2ix3t")
+theme_override_font_sizes/normal_font_size = 73
+text = "Nah!! I'd like win yk"
