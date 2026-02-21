@@ -13,11 +13,6 @@ func _physics_process(delta):
 	get_input()
 	move_and_slide()
 	
-	if velocity.x < 0:
-		SignalBus.changed_direction.emit("left")
-	elif velocity.x > 0:
-		SignalBus.changed_direction.emit("right")
-	
 	if velocity.length() > 0:
 		# Add your code here for when the character is moving (e.g., play walk animation)
 		if animation_player.current_animation != "moving":
