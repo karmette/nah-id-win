@@ -69,9 +69,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3t07l")
 }],
-"loop": false,
+"loop": true,
 "name": &"moving",
-"speed": 20.0
+"speed": 15.0
 }]
 
 [sub_resource type="Animation" id="Animation_on558"]
@@ -154,12 +154,13 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_508ok"]
-size = Vector2(128, 128)
+size = Vector2(128, 99)
 
 [node name="Player" type="CharacterBody2D" unique_id=722093044]
 script = ExtResource("1_xxgcw")
 
 [node name="Cheese" type="AnimatedSprite2D" parent="." unique_id=2036196822]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_exd8k")
 animation = &"idle"
 
@@ -169,11 +170,16 @@ libraries/ = SubResource("AnimationLibrary_icpky")
 autoplay = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=504738147]
+position = Vector2(0, 14.5)
 shape = SubResource("RectangleShape2D_508ok")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=632178557]
 
 [node name="WeaponOrigin" type="Node2D" parent="." unique_id=1159266532]
+z_index = -1
+position = Vector2(0, 12)
 script = ExtResource("4_ixbpm")
 
 [node name="Fork" parent="WeaponOrigin" unique_id=685591835 instance=ExtResource("4_5dc8e")]
+position = Vector2(16, 0)
+scale = Vector2(3.8253634, 3.8253634)
