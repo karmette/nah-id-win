@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bhmbikcc8o8j" path="res://characters/player/player.gd" id="1_xxgcw"]
 [ext_resource type="Texture2D" uid="uid://bg6mp86af2hck" path="res://assets/sprites/cheese/cheese-Sheet-Sheet.png" id="2_5dc8e"]
-[ext_resource type="PackedScene" uid="uid://cgit7jq7kxjxs" path="res://characters/player/fork.tscn" id="4_5dc8e"]
+[ext_resource type="PackedScene" path="res://characters/player/fork.tscn" id="4_5dc8e"]
 [ext_resource type="Script" uid="uid://dg28xn70kal2i" path="res://characters/player/rotation.gd" id="4_ixbpm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_idpv6"]
@@ -156,7 +156,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_508ok"]
 size = Vector2(128, 99)
 
-[node name="Player" type="CharacterBody2D" unique_id=722093044]
+[node name="Player" type="CharacterBody2D" unique_id=722093044 groups=["player"]]
 script = ExtResource("1_xxgcw")
 
 [node name="Cheese" type="AnimatedSprite2D" parent="." unique_id=2036196822]
