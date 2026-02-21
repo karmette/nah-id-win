@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c3q5s3oebia8u"]
 
 [ext_resource type="FontFile" uid="uid://b8wvn8y1nwjdn" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="1_2ix3t"]
+[ext_resource type="Script" uid="uid://4r3drb56o7px" path="res://ui/dialogue_box.gd" id="1_bode0"]
 
 [node name="DialogueBox" type="Panel" unique_id=361064559]
 anchors_preset = 12
@@ -13,6 +14,7 @@ offset_right = -52.0
 offset_bottom = -51.0
 grow_horizontal = 2
 grow_vertical = 0
+script = ExtResource("1_bode0")
 
 [node name="DialogueText" type="RichTextLabel" parent="." unique_id=1992518486]
 layout_mode = 1

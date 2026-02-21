@@ -17,6 +17,10 @@ config/icon="res://icon.svg"
 [autoload]
 
 Player="*uid://bhmbikcc8o8j"
+Constants="*uid://nqp84rftkl7i"
+JsonHelper="*uid://dxfqjsc6fqdkn"
+SignalBus="*uid://braci45cwt7c4"
+SceneManager="*uid://rtyveqbrn7m3"
 
 [display]
 
@@ -29,8 +33,11 @@ folder_colors={
 "res://assets/": "orange",
 "res://assets/sprites/fork_sprites/": "yellow",
 "res://assets/sprites/player_sprites/": "yellow",
+"res://autoloads/": "purple",
 "res://characters/": "red",
-"res://characters/player/": "yellow"
+"res://characters/player/": "yellow",
+"res://scenes/": "blue",
+"res://ui/": "green"
 }
 
 [input]
