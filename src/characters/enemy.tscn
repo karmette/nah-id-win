@@ -1,19 +1,80 @@
-[gd_scene format=3 uid="uid://dqfe3qn5ji0i5"]
+[gd_scene format=3 uid="uid://dplolwanxfpr8"]
 
 [ext_resource type="Script" uid="uid://d2mn8lr83u0gb" path="res://characters/enemy.gd" id="1_nhupr"]
 [ext_resource type="Texture2D" uid="uid://djd0vqkksriww" path="res://icon.svg" id="1_wa0eo"]
+[ext_resource type="Shader" uid="uid://dpxkjrfwngt8v" path="res://characters/damage_flash.gdshader" id="2_1ohc2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ggbst"]
+shader = ExtResource("2_1ohc2")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nhupr"]
 size = Vector2(118, 115)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ohc2"]
+size = Vector2(128, 128)
+
+[sub_resource type="Animation" id="Animation_1ohc2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_toq4n"]
+resource_name = "take_damage"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u8tuc"]
+_data = {
+&"RESET": SubResource("Animation_1ohc2"),
+&"take_damage": SubResource("Animation_toq4n")
+}
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1223147141 groups=["enemies"]]
 script = ExtResource("1_nhupr")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1740113536]
+material = SubResource("ShaderMaterial_ggbst")
 texture = ExtResource("1_wa0eo")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1923033875]
+[node name="WallCollision" type="CollisionShape2D" parent="." unique_id=1923033875]
+visible = false
 position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_nhupr")
 
 [node name="ForwardRay" type="RayCast2D" parent="." unique_id=464449794]
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=856572981]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=178788126]
+visible = false
+shape = SubResource("RectangleShape2D_1ohc2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1574592315]
+libraries/ = SubResource("AnimationLibrary_u8tuc")
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
