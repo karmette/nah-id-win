@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0lij8k2hd7xf"
-path="res://.godot/imported/wall5.png-215a08cbff454f227dff936b48740766.ctex"
+uid="uid://cm8e57lfbg456"
+path="res://.godot/imported/bluecheese splasher-Sheet.png-1bab0ccc7d91932c4aace117ed4118cb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/wall_tile/wall5.png"
-dest_files=["res://.godot/imported/wall5.png-215a08cbff454f227dff936b48740766.ctex"]
+source_file="res://assets/sprites/bluecheese_weaponandtrap/bluecheese splasher-Sheet.png"
+dest_files=["res://.godot/imported/bluecheese splasher-Sheet.png-1bab0ccc7d91932c4aace117ed4118cb.ctex"]
 
 [params]
 

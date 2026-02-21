@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://dplolwanxfpr8"]
+[gd_scene format=3 uid="uid://dqfe3qn5ji0i5"]
 
 [ext_resource type="Script" uid="uid://d2mn8lr83u0gb" path="res://characters/enemy.gd" id="1_nhupr"]
-[ext_resource type="Shader" uid="uid://dpxkjrfwngt8v" path="res://characters/damage_flash.gdshader" id="2_1ohc2"]
-[ext_resource type="Texture2D" uid="uid://7xonakugoerl" path="res://assets/sprites/simple rat/idle rat.png" id="3_1ohc2"]
+[ext_resource type="Shader" path="res://characters/damage_flash.gdshader" id="2_1ohc2"]
+[ext_resource type="Texture2D" uid="uid://7xonakugoerl" path="res://assets/sprites/simple_rat/idle rat.png" id="3_1ohc2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ggbst"]
 shader = ExtResource("2_1ohc2")
