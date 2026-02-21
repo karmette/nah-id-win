@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite_2d: AnimatedSprite2D = $Sprite2D
+@onready var hit_particles: GPUParticles2D = $HitParticles
 
 @export var health = 15
 @export var knockback_force = 300
@@ -48,7 +49,9 @@ func _physics_process(delta):
 		velocity = knockback_velocity
 		knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_decay * delta)
 	else:
-		# Normal movement logic here
+		# Normal movement logic here 
+		if not sprite_2d.is_playing():
+			sprite_2d.play()
 		var steering := Vector2.ZERO
 		
 		steering += seek() * seek_weight
@@ -170,7 +173,9 @@ func cohesion() -> Vector2:
 	return Vector2.ZERO
 
 func take_damage(amount: int, direction: Vector2):
+	hit_particles.rotation = direction.angle()
+	hit_particles.restart()
+	sprite_2d.pause()
 	animation_player.play("take_damage")
 	health -= amount
 	knockback_velocity = direction * knockback_force #sets knockback
-	print("ASDSA")

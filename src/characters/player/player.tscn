@@ -178,9 +178,8 @@ zoom = Vector2(1.27, 1.27)
 
 [node name="WeaponOrigin" type="Node2D" parent="." unique_id=1159266532]
 z_index = -1
-position = Vector2(0, 12)
+position = Vector2(0, 19)
 script = ExtResource("4_ixbpm")
 
 [node name="Fork" parent="WeaponOrigin" unique_id=685591835 instance=ExtResource("4_5dc8e")]
-position = Vector2(16, 0)
-scale = Vector2(3.8253634, 3.8253634)
+scale = Vector2(4.26, 4.26)
