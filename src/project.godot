@@ -35,6 +35,7 @@ folder_colors={
 "res://autoloads/": "purple",
 "res://characters/": "red",
 "res://characters/player/": "yellow",
+"res://levels/": "teal",
 "res://scenes/": "blue",
 "res://ui/": "green"
 }
@@ -78,4 +79,5 @@ attack={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"

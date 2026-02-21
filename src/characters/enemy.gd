@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+@export var health = 15
+
 # ========================
 # Movement tuning
 # ========================
@@ -7,6 +11,7 @@ extends CharacterBody2D
 @export var max_speed: float = 140.0
 @export var max_force: float = 900.0
 @export var look_ahead: float = 60.0
+
 
 # Flocking weights
 @export var seek_weight: float = 1.0
@@ -146,5 +151,14 @@ func cohesion() -> Vector2:
 		center /= count
 		var desired = (center - global_position).normalized() * max_speed
 		return desired - velocity
-
 	return Vector2.ZERO
+
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	var parent_node = area.get_parent() 
+	if parent_node.name == "ForkSprite":
+		take_damage(5)
+
+func take_damage(amount: int):
+	animation_player.play("take_damage")
+	health -= amount
