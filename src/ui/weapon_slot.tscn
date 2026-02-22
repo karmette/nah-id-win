@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://hpt5itklu07h"]
+[gd_scene format=3 uid="uid://r5d6li3pssqi"]
 
 [ext_resource type="Texture2D" uid="uid://cdwqljj6j87hb" path="res://assets/ui/item_circle.png" id="1_knbx7"]
 [ext_resource type="Script" uid="uid://d3ocapjggi0lr" path="res://ui/weapon_slot.gd" id="1_v8rwp"]

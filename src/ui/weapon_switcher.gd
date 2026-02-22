@@ -1,6 +1,6 @@
 extends Control
 
-var slot: PackedScene = preload("uid://hpt5itklu07h")
+var slot: PackedScene = preload("uid://r5d6li3pssqi")
 var fork_texture: Texture2D = preload("uid://dgop0rkdkfmt6")
 var knife_texture: Texture2D = preload("uid://cev5gora74jq3")
 var cheese_texture: Texture2D = preload("uid://c7alhccw35b46")
