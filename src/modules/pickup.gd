@@ -12,4 +12,6 @@ func _ready() -> void:
 
 func _on_pickup_range_area_entered(area: Area2D) -> void:
 	if area.get_parent().name == "Player":
-		SignalBus.pickup_item.emit(pickup_r.item_name)
+		# SignalBus.pickup_item.emit(pickup_r.item_name)
+		if pickup_r.type == "weapon":
+			GlobalVar.unlocked_weapons.append(pickup_r.item_name)

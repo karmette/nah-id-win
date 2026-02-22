@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bhmbikcc8o8j" path="res://characters/player/player.gd" id="1_xxgcw"]
 [ext_resource type="Texture2D" uid="uid://bg6mp86af2hck" path="res://assets/sprites/cheese/cheese-Sheet-Sheet.png" id="2_5dc8e"]
-[ext_resource type="Shader" uid="uid://dpxkjrfwngt8v" path="res://characters/damage_flash.gdshader" id="2_c6leb"]
+[ext_resource type="Shader" path="res://characters/damage_flash.gdshader" id="2_c6leb"]
 [ext_resource type="PackedScene" uid="uid://cgit7jq7kxjxs" path="res://characters/player/fork.tscn" id="4_5dc8e"]
 [ext_resource type="Script" uid="uid://dg28xn70kal2i" path="res://characters/player/rotation.gd" id="4_ixbpm"]
 [ext_resource type="Texture2D" uid="uid://cm8e57lfbg456" path="res://assets/weapons/bluecheese_weaponandtrap/bluecheese splasher-Sheet.png" id="6_dirf7"]
@@ -447,10 +447,10 @@ position = Vector2(0, 19)
 script = ExtResource("4_ixbpm")
 
 [node name="Fork" parent="WeaponOrigin" unique_id=685591835 instance=ExtResource("4_5dc8e")]
-visible = false
 scale = Vector2(4.26, 4.26)
 
 [node name="BlueCheese" type="Node2D" parent="WeaponOrigin" unique_id=1896139978]
+visible = false
 position = Vector2(-6.9999986, -25.999998)
 scale = Vector2(3.185, 2.735)
 script = ExtResource("6_idpv6")
