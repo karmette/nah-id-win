@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cldh2nqutpoo7"]
+
+[ext_resource type="Script" uid="uid://cd7vposaoc1n4" path="res://cheese_bullet.gd" id="1_5bjxe"]
+[ext_resource type="Texture2D" uid="uid://c44xtjpm2jpof" path="res://assets/weapons/bluecheese_weaponandtrap/bluecheese splasher bullets.png" id="2_botxl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8no7"]
+atlas = ExtResource("2_botxl")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dkeiu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8no7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CheeseBullet" type="Node2D" unique_id=1644922400]
+script = ExtResource("1_5bjxe")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1238993572]
+position = Vector2(-8, 16)
+scale = Vector2(1.91, 1.91)
+sprite_frames = SubResource("SpriteFrames_dkeiu")
+autoplay = "default"
+frame_progress = 0.7617442
