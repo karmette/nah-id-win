@@ -342,10 +342,7 @@ script = ExtResource("4_ixbpm")
 
 [node name="BlueCheese" parent="WeaponOrigin" unique_id=519013780 instance=ExtResource("6_dirf7")]
 visible = false
-<<<<<<< HEAD
 charged = false
-=======
->>>>>>> refs/remotes/origin/main
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=677610820]
 collision_layer = 4
