@@ -13,3 +13,4 @@ signal cutscene_finished()
 
 signal set_mana(value: int)
 signal set_health(value: int)
+signal update_stamina()
