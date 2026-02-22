@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c1rd62ys4wbew"]
+[gd_scene format=3 uid="uid://icmnq2ichhna"]
 
 [ext_resource type="Texture2D" uid="uid://dclkq3s28usbq" path="res://assets/ui/bars.png" id="1_fbt2u"]
 [ext_resource type="Texture2D" uid="uid://cedxixfyf5fpy" path="res://assets/ui/mana.png" id="2_gbcng"]
@@ -23,17 +23,6 @@ texture_progress = ExtResource("3_sc162")
 tint_under = Color(0.13423419, 0.13423419, 0.13423419, 1)
 tint_progress = Color(0.45403326, 0.4980886, 0.5323334, 1)
 
-[node name="StaminaBar" type="TextureProgressBar" parent="." unique_id=1882694745]
-layout_mode = 0
-offset_left = 64.0
-offset_top = 53.0
-offset_right = 152.0
-offset_bottom = 58.0
-value = 50.0
-texture_under = ExtResource("2_gbcng")
-texture_progress = ExtResource("2_gbcng")
-tint_under = Color(0.14509805, 0.14509805, 0.14509805, 1)
-
 [node name="HealthBar" type="TextureProgressBar" parent="." unique_id=1859870774]
 layout_mode = 0
 offset_left = 64.0
@@ -43,3 +32,14 @@ offset_bottom = 43.0
 value = 100.0
 texture_progress = ExtResource("3_sc162")
 tint_under = Color(0.1466411, 0.1466411, 0.1466411, 1)
+
+[node name="StaminaBar" type="TextureProgressBar" parent="HealthBar" unique_id=1882694745]
+layout_mode = 0
+offset_top = 15.0
+offset_right = 88.0
+offset_bottom = 20.0
+max_value = 300.0
+value = 50.0
+texture_under = ExtResource("2_gbcng")
+texture_progress = ExtResource("2_gbcng")
+tint_under = Color(0.14509805, 0.14509805, 0.14509805, 1)

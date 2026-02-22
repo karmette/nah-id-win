@@ -19,3 +19,4 @@ signal play_music(s: String)
 signal fade
 
 signal add_health(value: int)
+signal update_stamina()

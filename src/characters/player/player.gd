@@ -20,7 +20,11 @@ func _ready() -> void:
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	if Input.is_action_just_pressed("dash"):
-		dash(velocity.normalized(), 1000)
+		if GlobalVar.current_dash >= 100:
+			dash(velocity.normalized(), 1000)
+			GlobalVar.current_dash -= 100
+			SignalBus.update_stamina.emit()
+			over_vfx.play("dash_anim")
 	velocity = input_direction * speed
 
 func dash(direction, force: int):
