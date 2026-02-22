@@ -110,3 +110,4 @@ Mona Korani"
 horizontal_alignment = 1
 
 [connection signal="pressed" from="Main/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Main/VBoxContainer/PlayButton4" to="." method="_on_play_button_4_pressed"]

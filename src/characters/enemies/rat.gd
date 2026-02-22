@@ -37,6 +37,8 @@ var player: Node2D
 @onready var forward_ray: RayCast2D = $ForwardRay
 var damage = 5
 
+signal near_player
+
 func _ready():
 	add_to_group("enemies")
 	player = get_tree().get_first_node_in_group("player")
@@ -44,7 +46,8 @@ func _ready():
 func _physics_process(delta):
 	if player == null:
 		return
-
+	if position.distance_to(player.position) < 5:
+		near_player.emit()
 	# Apply knockback first
 	if knockback_velocity.length() > 0:
 		velocity = knockback_velocity

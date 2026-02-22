@@ -9,6 +9,7 @@ const SONGS = {
 
 func _ready():
 	SignalBus.play_music.connect(play_song)
+	volume_db -= 10
 
 
 func play_song(s: String):

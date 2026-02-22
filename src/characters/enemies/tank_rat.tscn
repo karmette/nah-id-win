@@ -1,75 +1,53 @@
-[gd_scene format=3 uid="uid://cu0a6br33xy46"]
+[gd_scene format=3 uid="uid://ddsm55b8lnrs1"]
 
-[ext_resource type="Script" uid="uid://drdokxxpv02ag" path="res://characters/enemies/fast_rat.gd" id="1_1c8wr"]
-[ext_resource type="Shader" path="res://characters/damage_flash.gdshader" id="2_1btvc"]
-[ext_resource type="Texture2D" uid="uid://kmbofkrx8hwo" path="res://assets/sprites/rat2-Sheet.png" id="3_1c8wr"]
-[ext_resource type="Texture2D" uid="uid://btm08sl4cupxg" path="res://assets/particles/hit_effect.png" id="4_n6mm1"]
-[ext_resource type="Animation" uid="uid://b5jcd45e3it6r" path="res://assets/anims/take_damage.res" id="4_sbc85"]
+[ext_resource type="Script" uid="uid://dldiui6wyx3br" path="res://characters/enemies/tank_rat.gd" id="1_mlr0t"]
+[ext_resource type="Shader" path="res://characters/damage_flash.gdshader" id="2_2wpio"]
+[ext_resource type="Texture2D" uid="uid://bu8vlebu5w35h" path="res://assets/sprites/boss_rat/boss rat.png" id="3_mlr0t"]
+[ext_resource type="Texture2D" uid="uid://btm08sl4cupxg" path="res://assets/particles/hit_effect.png" id="4_xudwh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ggbst"]
 resource_local_to_scene = true
-shader = ExtResource("2_1btvc")
+shader = ExtResource("2_2wpio")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_value = 0.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1btvc"]
-atlas = ExtResource("3_1c8wr")
-region = Rect2(0, 0, 96, 96)
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wpio"]
+atlas = ExtResource("3_mlr0t")
+region = Rect2(0, 0, 98, 96)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l2p84"]
-atlas = ExtResource("3_1c8wr")
-region = Rect2(96, 0, 96, 96)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ao4xu"]
+atlas = ExtResource("3_mlr0t")
+region = Rect2(98, 0, 98, 96)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n6mm1"]
-atlas = ExtResource("3_1c8wr")
-region = Rect2(192, 0, 96, 96)
+[sub_resource type="AtlasTexture" id="AtlasTexture_xudwh"]
+atlas = ExtResource("3_mlr0t")
+region = Rect2(196, 0, 98, 96)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_50iku"]
-atlas = ExtResource("3_1c8wr")
-region = Rect2(288, 0, 96, 96)
+[sub_resource type="AtlasTexture" id="AtlasTexture_45awq"]
+atlas = ExtResource("3_mlr0t")
+region = Rect2(294, 0, 98, 96)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fv5hp"]
-atlas = ExtResource("3_1c8wr")
-region = Rect2(384, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4c7yy"]
-atlas = ExtResource("3_1c8wr")
-region = Rect2(480, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s08sr"]
-atlas = ExtResource("3_1c8wr")
-region = Rect2(576, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fqoj8"]
-atlas = ExtResource("3_1c8wr")
-region = Rect2(672, 0, 96, 96)
+[sub_resource type="AtlasTexture" id="AtlasTexture_yx200"]
+atlas = ExtResource("3_mlr0t")
+region = Rect2(392, 0, 98, 96)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ki21s"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1btvc")
+"texture": SubResource("AtlasTexture_2wpio")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l2p84")
+"texture": SubResource("AtlasTexture_ao4xu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_n6mm1")
+"texture": SubResource("AtlasTexture_xudwh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_50iku")
+"texture": SubResource("AtlasTexture_45awq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fv5hp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4c7yy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s08sr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fqoj8")
+"texture": SubResource("AtlasTexture_yx200")
 }],
 "loop": true,
 "name": &"idle",
@@ -77,7 +55,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_toq4n"]
-height = 50.0
+radius = 46.0
+height = 92.0
 
 [sub_resource type="Animation" id="Animation_1ohc2"]
 resource_local_to_scene = true
@@ -95,10 +74,38 @@ tracks/0/keys = {
 "values": [0.0]
 }
 
+[sub_resource type="Animation" id="Animation_toq4n"]
+resource_local_to_scene = true
+resource_name = "take_damage"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/flash_value")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ggbst"]
 _data = {
 &"RESET": SubResource("Animation_1ohc2"),
-&"take_damage": ExtResource("4_sbc85")
+&"take_damage": SubResource("Animation_toq4n")
 }
 
 [sub_resource type="Curve" id="Curve_ggbst"]
@@ -123,37 +130,34 @@ scale_max = 2.1
 scale_curve = SubResource("CurveTexture_toq4n")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ggbst"]
-size = Vector2(12.714699, 27.37004)
+size = Vector2(46.58062, 52.562572)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u8tuc"]
-radius = 11.0
-height = 48.0
+radius = 47.0
+height = 94.0
 
-[node name="FastRat" type="CharacterBody2D" unique_id=1223147141 groups=["enemies"]]
+[node name="TankRat" type="CharacterBody2D" unique_id=1223147141 groups=["enemies"]]
 collision_layer = 4
 collision_mask = 4
-script = ExtResource("1_1c8wr")
+script = ExtResource("1_mlr0t")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=2123982186]
 material = SubResource("ShaderMaterial_ggbst")
-scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_ki21s")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.18070574
-flip_h = true
 
 [node name="ForwardRay" type="RayCast2D" parent="." unique_id=464449794]
 target_position = Vector2(0, 32)
 collide_with_bodies = false
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=856572981]
-position = Vector2(1, -5)
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=178788126]
-position = Vector2(3, 8)
+position = Vector2(0, -1)
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_toq4n")
 
@@ -163,7 +167,7 @@ libraries/ = SubResource("AnimationLibrary_ggbst")
 [node name="HitParticles" type="GPUParticles2D" parent="." unique_id=1776158011]
 emitting = false
 amount = 6
-texture = ExtResource("4_n6mm1")
+texture = ExtResource("4_xudwh")
 lifetime = 0.25
 one_shot = true
 explosiveness = 1.0
@@ -171,23 +175,17 @@ randomness = 0.65
 process_material = SubResource("ParticleProcessMaterial_1ohc2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2071975691]
-position = Vector2(5.414313, 2.4330547)
+position = Vector2(0, 2.999998)
 rotation = 1.5861676
 shape = SubResource("RectangleShape2D_ggbst")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1309639325]
-position = Vector2(11, -5)
 collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1081162921]
-position = Vector2(-7, 8)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_u8tuc")
-
-[node name="sfx_damaged" type="AudioStreamPlayer2D" parent="." unique_id=2070210565]
-
-[node name="sfx_squeak" type="AudioStreamPlayer2D" parent="." unique_id=802356636]
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
