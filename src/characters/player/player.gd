@@ -45,4 +45,4 @@ func _physics_process(delta):
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	SignalBus.shake_camera.emit(130, 0.2)
 	invinciblity_timer.start()
-	over_vfx.play("invincible_anim")
+	over_vfx.play.call_deferred("invincible_anim")
