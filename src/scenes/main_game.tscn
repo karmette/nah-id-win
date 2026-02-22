@@ -5,9 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://0x428xhw143h" path="res://characters/player/player_camera.tscn" id="3_ygxny"]
 [ext_resource type="PackedScene" uid="uid://ctat1q5phnnvi" path="res://characters/player/player.tscn" id="4_ipu61"]
 [ext_resource type="PackedScene" uid="uid://c3mcpfn2t5j81" path="res://modules/pickup.tscn" id="4_ygxny"]
-[ext_resource type="Texture2D" uid="uid://btm08sl4cupxg" path="res://assets/particles/hit_effect.png" id="5_70vka"]
 [ext_resource type="Resource" uid="uid://dxvhrja3viy1k" path="res://modules/pickup_resource/fork_pickup.tres" id="5_wi4c7"]
-[ext_resource type="PackedScene" uid="uid://c1rd62ys4wbew" path="res://ui/stat_bars.tscn" id="8_70vka"]
+[ext_resource type="PackedScene" uid="uid://icmnq2ichhna" path="res://ui/stat_bars.tscn" id="8_70vka"]
 [ext_resource type="PackedScene" uid="uid://bbuim7ilb550q" path="res://ui/fader.tscn" id="9_2l77h"]
 
 [node name="MainGame" type="Node2D" unique_id=730573980]
@@ -19,14 +18,6 @@ scale = Vector2(0.737, 0.737)
 
 [node name="PlayerCamera2" parent="Player" unique_id=2021474601 instance=ExtResource("3_ygxny")]
 zoom = Vector2(1.585, 1.585)
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=896619997]
-color = Color(0, 0, 0, 1)
-energy = 16.8
-
-[node name="PointLight2D" type="PointLight2D" parent="." unique_id=2078516794]
-texture = ExtResource("5_70vka")
-texture_scale = 7.55
 
 [node name="PickupFork" parent="." unique_id=63972919 instance=ExtResource("4_ygxny")]
 position = Vector2(1, 1)

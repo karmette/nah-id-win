@@ -28,10 +28,14 @@ func load_level(level_name: String):
 	
 
 func level_1():
+	var pickup = Constants.PICKUP.instantiate()
+	pickup.pickup_r = Constants.PICKUPS.fork
+	SceneManager.current_scene.add_child.call_deferred(pickup)
+	pickup.position = Vector2(0,0)
 	await SignalBus.pickup_item
 	SignalBus.play_music.emit("start")
-	for i in range(1):
-		begin_wave.call_deferred(1, 1)
+	for i in range(10):
+		begin_wave.call_deferred(1, 1, true, true)
 		await enemies_died
 	SignalBus.fade.emit()
 	await get_tree().create_timer(3).timeout
@@ -39,16 +43,20 @@ func level_1():
 	SceneManager.goto_scene(Constants.SCENES.cutscene_one)
 
 func level_2():
+	var pickup = Constants.PICKUP.instantiate()
+	pickup.pickup_r = Constants.PICKUPS.blue_cheese
+	SceneManager.current_scene.add_child.call_deferred(pickup)
+	pickup.position = Vector2(0,0)
+	await SignalBus.pickup_item
 	for i in range(10):
-		begin_wave.call_deferred(4, 2)
+		begin_wave.call_deferred(4, 2, true, true, true)
 		await enemies_died
 	SignalBus.fade.emit()
 	await get_tree().create_timer(3).timeout
-	GameManager.next_level()
-	SceneManager.goto_scene(Constants.SCENES.cutscene_one)
+	get_tree().quit()
 
 
-func begin_wave(rate: float = 1.0, stat_scale: float = 1.0, basic: bool = true, fast: bool = false):
+func begin_wave(rate: float = 1.0, stat_scale: float = 1.0, basic: bool = true, fast: bool = false, explode: bool = false):
 	var enemy_count: int = int(rate*5)
 	var angle_step: float = (2 * PI) / enemy_count
 
@@ -59,9 +67,11 @@ func begin_wave(rate: float = 1.0, stat_scale: float = 1.0, basic: bool = true, 
 		# Instantiate the enemy
 		var allowed: Dictionary[String, PackedScene]
 		for key in Constants.ENEMIES:
-			if basic:
+			if basic and key == "basic_rat":
 				allowed[key] = Constants.ENEMIES[key]
-			if fast:
+			if fast and key == "fast_rat":
+				allowed[key] = Constants.ENEMIES[key]
+			if explode and key == "bomb_rat":
 				allowed[key] = Constants.ENEMIES[key]
 		var enemy_name: String = allowed.keys().pick_random()
 		var enemy_scene: PackedScene = allowed[enemy_name]

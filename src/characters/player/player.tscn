@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bhmbikcc8o8j" path="res://characters/player/player.gd" id="1_xxgcw"]
 [ext_resource type="Texture2D" uid="uid://bg6mp86af2hck" path="res://assets/sprites/cheese/cheese-Sheet-Sheet.png" id="2_5dc8e"]
-[ext_resource type="Shader" uid="uid://dpxkjrfwngt8v" path="res://characters/damage_flash.gdshader" id="2_c6leb"]
+[ext_resource type="Shader" path="res://characters/damage_flash.gdshader" id="2_c6leb"]
 [ext_resource type="PackedScene" uid="uid://cgit7jq7kxjxs" path="res://characters/player/fork.tscn" id="4_5dc8e"]
 [ext_resource type="AudioStream" uid="uid://mqcxi726i1gb" path="res://assets/sfx/squish.mp3" id="4_idpv6"]
 [ext_resource type="Script" uid="uid://dg28xn70kal2i" path="res://characters/player/rotation.gd" id="4_ixbpm"]
@@ -448,6 +448,7 @@ position = Vector2(0, 17)
 shape = SubResource("CircleShape2D_dirf7")
 
 [node name="Label" type="Label" parent="." unique_id=1125537418]
+visible = false
 offset_left = -44.0
 offset_top = -41.0
 offset_right = 44.0
