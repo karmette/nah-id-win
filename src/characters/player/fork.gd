@@ -41,6 +41,7 @@ func _on_active_toggled(weapon: String):
 	if weapon == "fork":
 		active = true
 		self.visible = true
+		animation_player.play("picked")
 	else:
 		active = false
 		self.visible = false
