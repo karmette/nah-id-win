@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dwu5kaomj35c2" path="res://characters/player/blue_cheese.gd" id="1_80c5h"]
 [ext_resource type="Shader" uid="uid://dpxkjrfwngt8v" path="res://characters/damage_flash.gdshader" id="2_2863i"]
 [ext_resource type="Texture2D" uid="uid://cm8e57lfbg456" path="res://assets/weapons/bluecheese_weaponandtrap/bluecheese splasher-Sheet.png" id="3_6ec1c"]
+[ext_resource type="AudioStream" uid="uid://ckt82ku1bx8m0" path="res://assets/sfx/rumble.mp3" id="4_2863i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_80c5h"]
 shader = ExtResource("2_2863i")
@@ -257,7 +258,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_rpf03"]
 resource_name = "shoot"
-length = 0.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -370,6 +370,21 @@ tracks/7/keys = {
 "method": &"recoil_player"
 }]
 }
+tracks/8/type = "audio"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../sfx_shot")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"clips": [{
+"end_offset": 0.5594224,
+"start_offset": 0.078241006,
+"stream": ExtResource("4_2863i")
+}],
+"times": PackedFloat32Array(0.4)
+}
+tracks/8/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x5dtk"]
 _data = {
@@ -396,3 +411,5 @@ libraries/ = SubResource("AnimationLibrary_x5dtk")
 
 [node name="BulletSpawn" type="Marker2D" parent="AnimatedSprite2D" unique_id=1016315618]
 position = Vector2(17.501944, 5.544489)
+
+[node name="sfx_shot" type="AudioStreamPlayer2D" parent="." unique_id=971711771]
