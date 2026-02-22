@@ -31,7 +31,7 @@ func _process(_delta):
 	if GlobalVar.on_weapon_cooldown == false:
 		progress.value = 0
 		GlobalVar.cd_timer = 0
-	# if weapon in GlobalVar.unlocked_weapons:
-	# 	visible = true
-	# else:
-	# 	visible = false
+	if weapon in GlobalVar.unlocked_weapons:
+		visible = true
+	else:
+		visible = false
