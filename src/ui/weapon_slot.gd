@@ -2,6 +2,7 @@ extends Control
 
 @export var selected: bool = false
 @export var weapon_texture: Texture2D
+@export var weapon: String
 
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var sprite: TextureRect = $Slot/Weapon
@@ -30,3 +31,4 @@ func _process(_delta):
 	if GlobalVar.on_weapon_cooldown == false:
 		progress.value = 0
 		GlobalVar.cd_timer = 0
+	

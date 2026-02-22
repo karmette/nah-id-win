@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dqfe3qn5ji0i5"]
 
 [ext_resource type="Script" uid="uid://d2mn8lr83u0gb" path="res://characters/enemy.gd" id="1_nhupr"]
-[ext_resource type="Shader" uid="uid://dpxkjrfwngt8v" path="res://characters/damage_flash.gdshader" id="2_1ohc2"]
+[ext_resource type="Shader" path="res://characters/damage_flash.gdshader" id="2_1ohc2"]
 [ext_resource type="Texture2D" uid="uid://7xonakugoerl" path="res://assets/sprites/simple_rat/idle rat.png" id="3_1ohc2"]
 [ext_resource type="Texture2D" uid="uid://btm08sl4cupxg" path="res://assets/particles/hit_effect.png" id="4_ggbst"]
 
@@ -122,8 +122,8 @@ scale_min = 1.55
 scale_max = 2.1
 scale_curve = SubResource("CurveTexture_toq4n")
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ggbst"]
-height = 57.99315
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ggbst"]
+size = Vector2(20, 34.997047)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u8tuc"]
 radius = 13.0
@@ -169,10 +169,9 @@ randomness = 0.65
 process_material = SubResource("ParticleProcessMaterial_1ohc2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2071975691]
-visible = false
-position = Vector2(0, 9)
+position = Vector2(-7.4976377, 8.884743)
 rotation = 1.5861676
-shape = SubResource("CapsuleShape2D_ggbst")
+shape = SubResource("RectangleShape2D_ggbst")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1309639325]
 collision_layer = 4
