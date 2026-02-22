@@ -17,6 +17,7 @@ position = Vector2(88, 126)
 scale = Vector2(0.737, 0.737)
 
 [node name="PlayerCamera2" parent="Player" unique_id=2021474601 instance=ExtResource("3_ygxny")]
+zoom = Vector2(1.585, 1.585)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=896619997]
 color = Color(0, 0, 0, 1)

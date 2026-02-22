@@ -16,6 +16,8 @@ var dash_force = 1
 
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
+	if Input.is_action_just_pressed("dash"):
+		dash(velocity.normalized(), 1000)
 	velocity = input_direction * speed
 
 func dash(direction, force: int):
