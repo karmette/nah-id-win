@@ -25,25 +25,36 @@ var decay = 2000
 
 var charge = 0
 var charging = false
+var active = true
 
 func _ready():
 	SignalBus.toggle_attacking.connect(_on_attacking_toggled)
+	SignalBus.changed_weapon_to.connect(_on_active_toggled)
 	player = get_tree().get_first_node_in_group("player")
 
 func _on_attacking_toggled(state: bool):
 	on_cooldown = state
+	
+func _on_active_toggled(weapon: String):
+	if weapon == "fork":
+		active = true
+		self.visible = true
+	else:
+		active = false
+		self.visible = false
 
 func _input(event):
-	if Input.is_action_just_pressed("swing") and not on_cooldown:
-		animation_player.play("swing")
-		
-	if Input.is_action_just_pressed("thrust") and not on_cooldown:
-		animation_player.play("charge_thrust")
-		charging = true
+	if active:
+		if Input.is_action_just_pressed("swing") and not on_cooldown:
+			animation_player.play("swing")
+			
+		if Input.is_action_just_pressed("thrust") and not on_cooldown:
+			animation_player.play("charge_thrust")
+			charging = true
 
-	if Input.is_action_just_released("thrust") and not on_cooldown:
-		if charging:
-			thrust()
+		if Input.is_action_just_released("thrust") and not on_cooldown:
+			if charging:
+				thrust()
 
 func thrust():
 	charging = false

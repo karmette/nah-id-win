@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://0x428xhw143h"]
+
+[ext_resource type="Script" uid="uid://df2hqd1wh4y7u" path="res://characters/player/player_camera.gd" id="1_itmqv"]
+
+[node name="PlayerCamera" type="Camera2D" unique_id=2021474601]
+texture_filter = 1
+zoom = Vector2(1.32, 1.32)
+process_callback = 0
+position_smoothing_enabled = true
+script = ExtResource("1_itmqv")

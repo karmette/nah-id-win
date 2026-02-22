@@ -9,17 +9,14 @@ var cheese_texture: Texture2D = preload("uid://c7alhccw35b46")
 var can_switch: bool = true
 
 
-enum Weapon{KNIFE, FORK, BLUE_CHEESE}
+enum Weapon{FORK, BLUE_CHEESE}
 
-var current_weapon: Weapon = Weapon.KNIFE
+var current_weapon: Weapon
 var weapon_slots: Dictionary[Weapon, Control] = {}
 
 func _ready() -> void:
 	cd.timeout.connect(_on_cd_timeout)
 
-	# knife
-	weapon_slots[Weapon.KNIFE] = slot.instantiate()
-	weapon_slots[Weapon.KNIFE].weapon_texture = knife_texture
 
 	# fork
 	weapon_slots[Weapon.FORK] = slot.instantiate()
@@ -58,11 +55,11 @@ func switch_weapon(weapon: Weapon):
 func _input(event: InputEvent) -> void:
 	if can_switch:
 		if event.is_action_pressed("select_1"): # TODO: add unlocked weapons code later
-			switch_weapon(Weapon.KNIFE)
+			switch_weapon(Weapon.FORK)
+			SignalBus.changed_weapon_to.emit("fork")
 		elif event.is_action_pressed("select_2"):
-			switch_weapon(Weapon.FORK) 
-		elif event.is_action_pressed("select_3"):
 			switch_weapon(Weapon.BLUE_CHEESE) 
+			SignalBus.changed_weapon_to.emit("blue_cheese")
 
 func _on_cd_timeout() -> void:
 	can_switch = true
