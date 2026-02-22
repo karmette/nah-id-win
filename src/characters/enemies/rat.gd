@@ -1,3 +1,4 @@
+class_name Rat
 extends CharacterBody2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -37,7 +38,6 @@ var damage = 5
 func _ready():
 	add_to_group("enemies")
 	player = get_tree().get_first_node_in_group("player")
-
 
 func _physics_process(delta):
 	if player == null:
