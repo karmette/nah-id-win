@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cu0a6br33xy46"]
 
-[ext_resource type="Script" uid="uid://d2mn8lr83u0gb" path="res://characters/enemy.gd" id="1_1c8wr"]
+[ext_resource type="Script" uid="uid://drdokxxpv02ag" path="res://characters/fast_rat.gd" id="1_1c8wr"]
 [ext_resource type="Shader" path="res://characters/damage_flash.gdshader" id="2_1btvc"]
 [ext_resource type="Texture2D" uid="uid://kmbofkrx8hwo" path="res://assets/sprites/rat2-Sheet.png" id="3_1c8wr"]
 [ext_resource type="Texture2D" uid="uid://btm08sl4cupxg" path="res://assets/particles/hit_effect.png" id="4_n6mm1"]
@@ -76,8 +76,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_toq4n"]
-radius = 14.5
-height = 68.0
+height = 50.0
 
 [sub_resource type="Animation" id="Animation_1ohc2"]
 resource_local_to_scene = true
@@ -151,11 +150,11 @@ scale_max = 2.1
 scale_curve = SubResource("CurveTexture_toq4n")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ggbst"]
-size = Vector2(17.768496, 32.619717)
+size = Vector2(12.714699, 27.37004)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u8tuc"]
-radius = 13.0
-height = 56.0
+radius = 11.0
+height = 48.0
 
 [node name="FastRat" type="CharacterBody2D" unique_id=1223147141 groups=["enemies"]]
 collision_layer = 4
@@ -164,6 +163,7 @@ script = ExtResource("1_1c8wr")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=2123982186]
 material = SubResource("ShaderMaterial_ggbst")
+scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_ki21s")
 animation = &"idle"
 autoplay = "idle"
@@ -198,7 +198,7 @@ randomness = 0.65
 process_material = SubResource("ParticleProcessMaterial_1ohc2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2071975691]
-position = Vector2(2.8286242, 3.8661094)
+position = Vector2(5.414313, 2.4330547)
 rotation = 1.5861676
 shape = SubResource("RectangleShape2D_ggbst")
 
