@@ -60,3 +60,4 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 func take_damage(amount: int):
 	health -= amount
 	label.text = "Health: " + str(health)
+	SignalBus.set_health.emit(health-amount)
