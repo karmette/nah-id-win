@@ -30,6 +30,6 @@ func begin_wave(rate: float = 1.0, scale: float = 1.0, easy: bool = true):
 		var enemy_scene: PackedScene = Constants.ENEMIES_EASY[enemy_name]
 		var enemy: Node2D = enemy_scene.instantiate()
 		enemy.global_position = global_position + spawn_position
-		enemy.scale = Vector2(1.5, 1.5)
+		enemy.scale = Vector2(2.075,2.075)
 		enemy.health *= scale
 		add_child(enemy)

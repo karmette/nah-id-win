@@ -57,6 +57,7 @@ func emit_attacking(state: bool):
 	SignalBus.toggle_attacking.emit(state)
 	
 func _on_hitbox_area_entered(area: Area2D) -> void:
+	SignalBus.shake_camera.emit(30, 0.2)
 	var enemy = area.get_parent()
 	var direction = (enemy.global_position - global_position).normalized()
 

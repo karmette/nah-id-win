@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://dqfe3qn5ji0i5"]
 
 [ext_resource type="Script" uid="uid://d2mn8lr83u0gb" path="res://characters/enemy.gd" id="1_nhupr"]
-[ext_resource type="Shader" path="res://characters/damage_flash.gdshader" id="2_1ohc2"]
+[ext_resource type="Shader" uid="uid://dpxkjrfwngt8v" path="res://characters/damage_flash.gdshader" id="2_1ohc2"]
 [ext_resource type="Texture2D" uid="uid://7xonakugoerl" path="res://assets/sprites/simple_rat/idle rat.png" id="3_1ohc2"]
 [ext_resource type="Texture2D" uid="uid://btm08sl4cupxg" path="res://assets/particles/hit_effect.png" id="4_ggbst"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ggbst"]
+resource_local_to_scene = true
 shader = ExtResource("2_1ohc2")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_value = 0.0
@@ -46,10 +47,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ohc2"]
-size = Vector2(74, 27)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_toq4n"]
+radius = 14.5
+height = 68.0
 
 [sub_resource type="Animation" id="Animation_1ohc2"]
+resource_local_to_scene = true
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -65,6 +68,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_toq4n"]
+resource_local_to_scene = true
 resource_name = "take_damage"
 length = 0.2
 tracks/0/type = "value"
@@ -91,7 +95,7 @@ tracks/1/keys = {
 "values": []
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_u8tuc"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ggbst"]
 _data = {
 &"RESET": SubResource("Animation_1ohc2"),
 &"take_damage": SubResource("Animation_toq4n")
@@ -121,6 +125,10 @@ scale_curve = SubResource("CurveTexture_toq4n")
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ggbst"]
 height = 57.99315
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u8tuc"]
+radius = 13.0
+height = 56.0
+
 [node name="Enemy" type="CharacterBody2D" unique_id=1223147141 groups=["enemies"]]
 collision_layer = 4
 collision_mask = 4
@@ -142,11 +150,13 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=178788126]
-position = Vector2(3, 10.5)
-shape = SubResource("RectangleShape2D_1ohc2")
+visible = false
+position = Vector2(3, 8)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_toq4n")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1574592315]
-libraries/ = SubResource("AnimationLibrary_u8tuc")
+libraries/ = SubResource("AnimationLibrary_ggbst")
 
 [node name="HitParticles" type="GPUParticles2D" parent="." unique_id=1776158011]
 emitting = false
@@ -159,8 +169,18 @@ randomness = 0.65
 process_material = SubResource("ParticleProcessMaterial_1ohc2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2071975691]
+visible = false
 position = Vector2(0, 9)
 rotation = 1.5861676
 shape = SubResource("CapsuleShape2D_ggbst")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1309639325]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1081162921]
+position = Vector2(-7, 8)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_u8tuc")
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

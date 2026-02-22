@@ -23,6 +23,7 @@ sources/5 = SubResource("TileSetAtlasSource_e77qm")
 [node name="stage1" type="Node2D" unique_id=319483865]
 
 [node name="Player" parent="." unique_id=722093044 instance=ExtResource("1_vrt2j")]
+position = Vector2(0, -1.0000001)
 scale = Vector2(0.73741436, 0.73741436)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1333397496]
