@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_hcggv")
 item_name = "fork"
+type = "weapon"
 metadata/_custom_type_script = "uid://cm4xfn3j1p7jv"

@@ -16,15 +16,16 @@ var weapon_slots: Dictionary[Weapon, Control] = {}
 
 func _ready() -> void:
 	cd.timeout.connect(_on_cd_timeout)
-
-
 	# fork
 	weapon_slots[Weapon.FORK] = slot.instantiate()
 	weapon_slots[Weapon.FORK].weapon_texture = fork_texture
+	weapon_slots[Weapon.FORK].weapon = "fork"
 
 	# cheese
 	weapon_slots[Weapon.BLUE_CHEESE] = slot.instantiate()
 	weapon_slots[Weapon.BLUE_CHEESE].weapon_texture = cheese_texture
+	weapon_slots[Weapon.FORK].weapon = "blue_cheese"
+
 	var offset: int = 100
 	for i in weapon_slots:
 		var weapon: Control = weapon_slots.get(i)
