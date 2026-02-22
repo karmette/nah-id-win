@@ -1,11 +1,11 @@
 extends Node2D
 
-const SPEED: int = 600
+@export var speed: int = 600
 var knockback_force = 800
-var damage = 15
+@export var damage = 15
 
 func _process(delta: float) -> void:
-	position += transform.x * SPEED * delta
+	position += transform.x * speed * delta
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	var enemy = area.get_parent()

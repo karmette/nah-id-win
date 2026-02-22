@@ -8,7 +8,7 @@ var on_cooldown = false
 
 var swing_damage = 5
 
-var thrust_damage_max = 20
+var thrust_damage_max = 25
 var thrust_damage_min = 4
 
 var player: Node2D
