@@ -9,6 +9,8 @@ func _ready() -> void:
 	match GameManager.current_level:
 		0:
 			load_level("sewers")
+		1:
+			load_level("sewers2")
 
 func load_level(level_name: String):
 	if not Constants.LEVELS.has(level_name):
@@ -21,14 +23,30 @@ func load_level(level_name: String):
 	add_child(current_level)
 	if level_name == "sewers":
 		level_1()
+	elif level_name == "sewers2":
+		level_2()
 	
 
 func level_1():
 	await SignalBus.pickup_item
-	for i in range(10):
+	SignalBus.play_music.emit("start")
+	for i in range(1):
 		begin_wave.call_deferred(1, 1)
 		await enemies_died
+	SignalBus.fade.emit()
+	await get_tree().create_timer(3).timeout
 	GameManager.next_level()
+	SceneManager.goto_scene(Constants.SCENES.cutscene_one)
+
+func level_2():
+	for i in range(10):
+		begin_wave.call_deferred(4, 2)
+		await enemies_died
+	SignalBus.fade.emit()
+	await get_tree().create_timer(3).timeout
+	GameManager.next_level()
+	SceneManager.goto_scene(Constants.SCENES.cutscene_one)
+
 
 func begin_wave(rate: float = 1.0, stat_scale: float = 1.0, basic: bool = true, fast: bool = false):
 	var enemy_count: int = int(rate*5)

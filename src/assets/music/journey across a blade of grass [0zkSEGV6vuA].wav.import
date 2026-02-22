@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ba5p261c00xx6"
+path="res://.godot/imported/journey across a blade of grass [0zkSEGV6vuA].wav-b27bcf194d56648e948a105ed415602c.sample"
+
+[deps]
+
+source_file="res://assets/music/journey across a blade of grass [0zkSEGV6vuA].wav"
+dest_files=["res://.godot/imported/journey across a blade of grass [0zkSEGV6vuA].wav-b27bcf194d56648e948a105ed415602c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

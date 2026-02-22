@@ -16,4 +16,6 @@ func _on_pickup_range_area_entered(area: Area2D) -> void:
 		if pickup_r.type == "weapon":
 			GlobalVar.unlocked_weapons.append(pickup_r.item_name)
 			SignalBus.pickup_item.emit(pickup_r.item_name)
+		elif pickup_r.type == "heal":
+			SignalBus.add_health.emit(10)
 		self.queue_free()

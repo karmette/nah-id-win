@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://btm08sl4cupxg" path="res://assets/particles/hit_effect.png" id="5_70vka"]
 [ext_resource type="Resource" uid="uid://dxvhrja3viy1k" path="res://modules/pickup_resource/fork_pickup.tres" id="5_wi4c7"]
 [ext_resource type="PackedScene" uid="uid://c1rd62ys4wbew" path="res://ui/stat_bars.tscn" id="8_70vka"]
+[ext_resource type="PackedScene" uid="uid://bbuim7ilb550q" path="res://ui/fader.tscn" id="9_2l77h"]
 
 [node name="MainGame" type="Node2D" unique_id=730573980]
 script = ExtResource("1_s3esy")
@@ -41,3 +42,6 @@ offset_top = -65.0
 offset_right = 193.0
 offset_bottom = 31.0
 scale = Vector2(4, 4)
+
+[node name="Fader" parent="CanvasLayer" unique_id=721573022 instance=ExtResource("9_2l77h")]
+visible = false

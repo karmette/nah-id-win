@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PickupItem" format=3 uid="uid://hr7ewnrdssff"]
+
+[ext_resource type="Script" uid="uid://cm4xfn3j1p7jv" path="res://modules/pickup_resource/pickup_item.gd" id="1_4vhj4"]
+[ext_resource type="Texture2D" uid="uid://c7alhccw35b46" path="res://assets/weapons/bluecheese_weaponandtrap/bluecheese.png" id="2_j8wah"]
+
+[resource]
+script = ExtResource("1_4vhj4")
+item_name = "blue_cheese"
+texture = ExtResource("2_j8wah")
+type = "weapon"
+metadata/_custom_type_script = "uid://cm4xfn3j1p7jv"

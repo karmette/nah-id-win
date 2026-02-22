@@ -207,4 +207,11 @@ func take_knockback(direction: Vector2, force:int):
 	knockback_velocity = direction * force #sets knockback
 	
 func die():
+	var random = RandomNumberGenerator.new()
+	var chance = random.randi()%10
+	if chance == 0:
+		var pickup = Constants.PICKUP.instantiate()
+		pickup.pickup_r = Constants.PICKUPS.milk
+		SceneManager.current_scene.add_child.call_deferred(pickup)
+		pickup.position = self.position
 	self.queue_free()

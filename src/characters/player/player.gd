@@ -14,6 +14,9 @@ var dash_force = 1
 @export var can_move = true
 @export var invincible = false
 
+func _ready() -> void:
+	SignalBus.add_health.connect(heal)
+
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	if Input.is_action_just_pressed("dash"):
@@ -61,5 +64,15 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 
 func take_damage(amount: int):
 	health -= amount
+	if health <= 0:
+		pass # die
 	label.text = "Health: " + str(health)
 	SignalBus.set_health.emit(health-amount)
+
+func heal(amount: int):
+	health += amount
+	if health >= GlobalVar.max_health:
+		health = 100
+		SignalBus.set_health.emit(health)
+		return
+	SignalBus.set_health.emit(health+amount)

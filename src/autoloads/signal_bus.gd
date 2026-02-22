@@ -13,3 +13,9 @@ signal cutscene_finished()
 
 signal set_mana(value: int)
 signal set_health(value: int)
+
+signal play_music(s: String)
+
+signal fade
+
+signal add_health(value: int)

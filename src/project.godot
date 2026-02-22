@@ -23,6 +23,7 @@ SignalBus="*uid://braci45cwt7c4"
 SceneManager="*uid://rtyveqbrn7m3"
 GlobalVar="*uid://bcm4o2f4cfm56"
 GameManager="*uid://fogyl30karxy"
+MusicPlayer="*uid://ckef3gggw8jc"
 
 [display]
 

@@ -1,0 +1,32 @@
+{
+    "nodes": [
+        {
+            "t": "narrator",
+            "text": "Legend says, one day, the chosen cheese will come and slay the evil rats."
+        },
+        {
+            "t": "narrator",
+            "text": "But what makes the chosen cheese so special?"
+        },
+        {
+            "t": "narrator",
+            "text": "Well, most cheese are made from cow milk."
+        },
+        {
+            "t": "narrator",
+            "text": "This one. He's made by the GOAT."
+        },
+        {
+            "t": "narrator",
+            "text": "But everyone says. Theres no way a cheese can defeat rats. Rats EAT cheese."
+        },
+        {
+            "t": "cheese",
+            "text": ".............."
+        },
+        {
+            "t": "cheese",
+            "text": "Nah, I'd Win."
+        }
+    ]
+}
