@@ -32,7 +32,7 @@ var knockback_velocity: Vector2 = Vector2.ZERO
 var player: Node2D
 
 @onready var forward_ray: RayCast2D = $ForwardRay
-
+var damage = 5
 
 func _ready():
 	add_to_group("enemies")
@@ -181,4 +181,3 @@ func take_damage(amount: int, direction: Vector2, force):
 	
 func take_knockback(direction: Vector2, force:int):
 	knockback_velocity = direction * force #sets knockback
-	
