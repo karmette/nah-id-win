@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c3mcpfn2t5j81" path="res://modules/pickup.tscn" id="4_ygxny"]
 [ext_resource type="Texture2D" uid="uid://btm08sl4cupxg" path="res://assets/particles/hit_effect.png" id="5_70vka"]
 [ext_resource type="Resource" uid="uid://dxvhrja3viy1k" path="res://modules/pickup_resource/fork_pickup.tres" id="5_wi4c7"]
+[ext_resource type="PackedScene" uid="uid://c1rd62ys4wbew" path="res://ui/stat_bars.tscn" id="8_70vka"]
 
 [node name="MainGame" type="Node2D" unique_id=730573980]
 script = ExtResource("1_s3esy")
@@ -32,3 +33,10 @@ pickup_r = ExtResource("5_wi4c7")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1905629549]
 
 [node name="WeaponSwitcher" parent="CanvasLayer" unique_id=460980050 instance=ExtResource("3_d2op2")]
+
+[node name="StatBars" parent="CanvasLayer" unique_id=2105202843 instance=ExtResource("8_70vka")]
+offset_left = 1.0
+offset_top = -65.0
+offset_right = 193.0
+offset_bottom = 31.0
+scale = Vector2(4, 4)
