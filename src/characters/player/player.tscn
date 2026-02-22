@@ -362,5 +362,12 @@ explosiveness = 1.0
 randomness = 0.59
 process_material = SubResource("ParticleProcessMaterial_x5dtk")
 
+[node name="Label" type="Label" parent="." unique_id=1125537418]
+offset_left = -44.0
+offset_top = -41.0
+offset_right = 44.0
+offset_bottom = -18.0
+text = "Health: 100"
+
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="timeout" from="InvinciblityTimer" to="." method="_on_invinciblity_timer_timeout"]

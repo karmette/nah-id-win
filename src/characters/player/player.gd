@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var invinciblity_timer: Timer = $InvinciblityTimer
 @onready var over_vfx: AnimationPlayer = $OverVFX
+@onready var label: Label = $Label
 
 @export var speed = 400
 var health = 100
@@ -43,6 +44,17 @@ func _physics_process(delta):
 
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
+	if invincible:
+		return
+	
+	var body = area.get_parent()
+	
+	invincible = true   # ← SET IT HERE IMMEDIATELY
+	
+	take_damage(body.damage)
 	SignalBus.shake_camera.emit(130, 0.2)
-	invinciblity_timer.start()
 	over_vfx.play("invincible_anim")
+
+func take_damage(amount: int):
+	health -= amount
+	label.text = "Health: " + str(health)
