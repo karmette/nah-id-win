@@ -18,6 +18,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_5bjxe"]
+radius = 11.530218
+
 [node name="CheeseBullet" type="Node2D" unique_id=1644922400]
 script = ExtResource("1_5bjxe")
 
@@ -27,3 +30,13 @@ scale = Vector2(1.91, 1.91)
 sprite_frames = SubResource("SpriteFrames_dkeiu")
 autoplay = "default"
 frame_progress = 0.7617442
+
+[node name="Hitbox" type="Area2D" parent="AnimatedSprite2D" unique_id=1455373601]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Hitbox" unique_id=369758706]
+position = Vector2(5.2356024, -7.8534036)
+shape = SubResource("CircleShape2D_5bjxe")
+
+[connection signal="area_entered" from="AnimatedSprite2D/Hitbox" to="." method="_on_hitbox_area_entered"]

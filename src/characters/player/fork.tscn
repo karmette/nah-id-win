@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cgit7jq7kxjxs"]
 
 [ext_resource type="Script" uid="uid://djn6cpmrrqq7y" path="res://characters/player/fork.gd" id="1_4xibx"]
-[ext_resource type="Texture2D" uid="uid://dgop0rkdkfmt6" path="res://assets/sprites/fork_sprites/fork.png" id="2_ls71b"]
+[ext_resource type="Texture2D" uid="uid://dgop0rkdkfmt6" path="res://assets/weapons/fork_sprites/fork.png" id="2_ls71b"]
 [ext_resource type="Shader" uid="uid://dpxkjrfwngt8v" path="res://characters/damage_flash.gdshader" id="2_yk8b5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i1gwu"]
@@ -73,10 +73,10 @@ tracks/0/path = NodePath("..:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 1.8666667, 1.9),
+"times": PackedFloat32Array(0, 0.1, 1.85, 1.9),
 "transitions": PackedFloat32Array(3.2490098, 1.8660666, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(-37, 0), Vector2(-37, 0), Vector2(-59.41, 0)]
+"values": [Vector2(0, 0), Vector2(-48.18, 0), Vector2(-48.18, 0), Vector2(-59.41, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false

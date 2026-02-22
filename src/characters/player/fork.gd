@@ -18,6 +18,7 @@ var thrust_dash_force_min = 500
 
 var thrust_knockback_force_max = 750
 var thrust_knockback_force_min = 250
+var thrust_recoil_force = 150
 
 var swing_knockback_force = 400
 var swing_recoil_force = 300
@@ -49,7 +50,7 @@ func _input(event):
 		if Input.is_action_just_pressed("swing") and not on_cooldown:
 			animation_player.play("swing")
 			
-		if Input.is_action_just_pressed("thrust") and not on_cooldown:
+		if Input.is_action_pressed("thrust") and not on_cooldown:
 			animation_player.play("charge_thrust")
 			charging = true
 
@@ -77,6 +78,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		var knockback_force = lerp(thrust_knockback_force_min, thrust_knockback_force_max, charge)
 		var damage = lerp(thrust_damage_min, thrust_damage_max, charge)
 		enemy.take_damage(damage, direction, knockback_force)
+		player.dash((-(get_global_mouse_position() - global_position)).normalized(), thrust_recoil_force)
 	elif animation_player.current_animation == "swing":
 		enemy.take_damage(swing_damage, direction, swing_knockback_force)
 		player.dash((-(get_global_mouse_position() - global_position)).normalized(), swing_recoil_force)
