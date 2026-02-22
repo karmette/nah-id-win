@@ -176,8 +176,13 @@ func take_damage(amount: int, direction: Vector2, force):
 	hit_particles.restart()
 	sprite_2d.pause()
 	self.get_node("AnimationPlayer").play("take_damage")
-	health -= amount
 	take_knockback(direction, force)
+	health -= amount
+	if health <= 0:
+		die()
 	
 func take_knockback(direction: Vector2, force:int):
 	knockback_velocity = direction * force #sets knockback
+	
+func die():
+	self.queue_free()
