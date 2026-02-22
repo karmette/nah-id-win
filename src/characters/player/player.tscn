@@ -339,6 +339,7 @@ position = Vector2(0, 19)
 script = ExtResource("4_ixbpm")
 
 [node name="Fork" parent="WeaponOrigin" unique_id=685591835 instance=ExtResource("4_5dc8e")]
+visible = false
 
 [node name="BlueCheese" parent="WeaponOrigin" unique_id=519013780 instance=ExtResource("6_dirf7")]
 visible = false

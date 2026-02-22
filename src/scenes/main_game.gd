@@ -26,7 +26,7 @@ func load_level(level_name: String):
 func level_1():
 	await SignalBus.pickup_item
 	for i in range(10):
-		begin_wave(1, 1)
+		begin_wave.call_deferred(1, 1)
 		await enemies_died
 	GameManager.next_level()
 
