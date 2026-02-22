@@ -11,6 +11,18 @@ offset_bottom = 96.0
 texture = ExtResource("1_fbt2u")
 script = ExtResource("2_sc162")
 
+[node name="UnderBar" type="TextureProgressBar" parent="." unique_id=462603018]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 38.0
+offset_right = 159.0
+offset_bottom = 43.0
+value = 100.0
+texture_under = ExtResource("3_sc162")
+texture_progress = ExtResource("3_sc162")
+tint_under = Color(0.13423419, 0.13423419, 0.13423419, 1)
+tint_progress = Color(0.45403326, 0.4980886, 0.5323334, 1)
+
 [node name="StaminaBar" type="TextureProgressBar" parent="." unique_id=1882694745]
 layout_mode = 0
 offset_left = 64.0
@@ -29,6 +41,5 @@ offset_top = 38.0
 offset_right = 159.0
 offset_bottom = 43.0
 value = 100.0
-texture_under = ExtResource("3_sc162")
 texture_progress = ExtResource("3_sc162")
 tint_under = Color(0.1466411, 0.1466411, 0.1466411, 1)
