@@ -12,4 +12,6 @@ func _ready() -> void:
 		2: 
 			SignalBus.start_dialogue.emit.call_deferred("cutscene_three")
 	await SignalBus.cutscene_finished
+	if GameManager.current_level == 2:
+		get_tree().quit()
 	SceneManager.goto_scene(Constants.SCENES.main_game)

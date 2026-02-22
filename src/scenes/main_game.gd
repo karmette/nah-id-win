@@ -53,7 +53,8 @@ func level_2():
 		await enemies_died
 	SignalBus.fade.emit()
 	await get_tree().create_timer(3).timeout
-	get_tree().quit()
+	GameManager.next_level()
+	SceneManager.goto_scene(Constants.SCENES.cutscene_one)
 
 
 func begin_wave(rate: float = 1.0, stat_scale: float = 1.0, basic: bool = true, fast: bool = false, explode: bool = false):
