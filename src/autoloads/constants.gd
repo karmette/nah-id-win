@@ -16,3 +16,7 @@ const ENEMIES_EASY: Dictionary[String, PackedScene] = {
 const WEAPONS: Dictionary[String, PackedScene] = {
 	"fork":preload("uid://cgit7jq7kxjxs")
 }
+
+const UI: Dictionary[String, String] = {
+	"weapon_switcher":"uid://ciw5orhevh65f",
+}

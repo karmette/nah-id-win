@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://c722daqyojicv"]
 
 [ext_resource type="Script" uid="uid://cesth2evfds2f" path="res://scenes/main_game.gd" id="1_s3esy"]
-[ext_resource type="PackedScene" path="res://ui/weapon_switcher.tscn" id="3_d2op2"]
+[ext_resource type="Texture2D" uid="uid://btm08sl4cupxg" path="res://assets/particles/hit_effect.png" id="3_d2op2"]
 [ext_resource type="PackedScene" uid="uid://ctat1q5phnnvi" path="res://characters/player/player.tscn" id="4_ipu61"]
+[ext_resource type="PackedScene" uid="uid://c3mcpfn2t5j81" path="res://modules/pickup.tscn" id="4_ygxny"]
+[ext_resource type="Resource" uid="uid://dxvhrja3viy1k" path="res://modules/pickup_resource/fork_pickup.tres" id="5_wi4c7"]
 
 [node name="MainGame" type="Node2D" unique_id=730573980]
 script = ExtResource("1_s3esy")
@@ -11,8 +13,14 @@ script = ExtResource("1_s3esy")
 position = Vector2(88, 126)
 scale = Vector2(0.737, 0.737)
 
-[node name="WeaponSwitcher" parent="." unique_id=460980050 instance=ExtResource("3_d2op2")]
-offset_left = -130.0
-offset_top = -127.0
-offset_right = -130.0
-offset_bottom = -127.0
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=896619997]
+color = Color(0, 0, 0, 1)
+energy = 16.8
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=2078516794]
+texture = ExtResource("3_d2op2")
+texture_scale = 7.55
+
+[node name="PickupFork" parent="." unique_id=63972919 instance=ExtResource("4_ygxny")]
+position = Vector2(1, 1)
+pickup_r = ExtResource("5_wi4c7")

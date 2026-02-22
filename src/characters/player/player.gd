@@ -53,7 +53,8 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	
 	take_damage(body.damage)
 	SignalBus.shake_camera.emit(130, 0.2)
-	over_vfx.play("invincible_anim")
+	invinciblity_timer.start()
+	over_vfx.play.call_deferred("invincible_anim")
 
 func take_damage(amount: int):
 	health -= amount

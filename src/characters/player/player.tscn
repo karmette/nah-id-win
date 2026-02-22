@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bhmbikcc8o8j" path="res://characters/player/player.gd" id="1_xxgcw"]
 [ext_resource type="Texture2D" uid="uid://bg6mp86af2hck" path="res://assets/sprites/cheese/cheese-Sheet-Sheet.png" id="2_5dc8e"]
-[ext_resource type="Shader" uid="uid://dpxkjrfwngt8v" path="res://characters/damage_flash.gdshader" id="2_c6leb"]
-[ext_resource type="Script" uid="uid://df2hqd1wh4y7u" path="res://characters/player/player_camera.gd" id="3_ixbpm"]
+[ext_resource type="Shader" path="res://characters/damage_flash.gdshader" id="2_c6leb"]
+[ext_resource type="Script" path="res://characters/player/player_camera.gd" id="3_ixbpm"]
 [ext_resource type="PackedScene" uid="uid://cgit7jq7kxjxs" path="res://characters/player/fork.tscn" id="4_5dc8e"]
 [ext_resource type="Script" uid="uid://dg28xn70kal2i" path="res://characters/player/rotation.gd" id="4_ixbpm"]
 [ext_resource type="Texture2D" uid="uid://btm08sl4cupxg" path="res://assets/particles/hit_effect.png" id="7_dirf7"]
@@ -309,6 +309,9 @@ scale_min = 2.45
 scale_max = 3.6499999
 scale_curve = SubResource("CurveTexture_rpf03")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_dirf7"]
+radius = 79.30952
+
 [node name="Player" type="CharacterBody2D" unique_id=722093044 groups=["player"]]
 script = ExtResource("1_xxgcw")
 
@@ -347,7 +350,7 @@ scale = Vector2(4.26, 4.26)
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=677610820]
 collision_layer = 4
-collision_mask = 4
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1372194233]
 position = Vector2(0, 25)
@@ -365,6 +368,13 @@ explosiveness = 1.0
 randomness = 0.59
 process_material = SubResource("ParticleProcessMaterial_x5dtk")
 
+[node name="PickupArea" type="Area2D" parent="." unique_id=599529908]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea" unique_id=2017611899]
+position = Vector2(0, 17)
+shape = SubResource("CircleShape2D_dirf7")
 [node name="Label" type="Label" parent="." unique_id=1125537418]
 offset_left = -44.0
 offset_top = -41.0

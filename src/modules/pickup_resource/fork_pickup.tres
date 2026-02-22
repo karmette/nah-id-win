@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PickupItem" format=3 uid="uid://dxvhrja3viy1k"]
+
+[ext_resource type="Script" uid="uid://cm4xfn3j1p7jv" path="res://modules/pickup_resource/pickup_item.gd" id="1_hcggv"]
+[ext_resource type="Texture2D" uid="uid://dgop0rkdkfmt6" path="res://assets/weapons/fork_sprites/fork.png" id="2_ovjcy"]
+
+[resource]
+script = ExtResource("1_hcggv")
+item_name = "fork"
+texture = ExtResource("2_ovjcy")
+metadata/_custom_type_script = "uid://cm4xfn3j1p7jv"

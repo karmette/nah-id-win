@@ -5,6 +5,8 @@ var current_scene = null
 
 func _ready():
 	init_current_scene()
+	add_ui_to_root.call_deferred(Constants.UI.weapon_switcher)
+
 
 func init_current_scene():
 	var root = get_tree().root
@@ -26,4 +28,11 @@ func _deferred_goto_scene(path):
 	return
 func goto_scene(path):
 	_deferred_goto_scene.call_deferred(path)
+
+func add_ui_to_root(path: String):
+	var root = get_tree().root
+
+	var s = ResourceLoader.load(path).instantiate()
+
+	root.add_child(s)
 	
