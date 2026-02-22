@@ -67,10 +67,15 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	invinciblity_timer.start()
 	over_vfx.play.call_deferred("invincible_anim")
 
+func shake_screen(intensity_length):
+	SignalBus.shake_camera.emit(130, 0.2)
+
 func take_damage(amount: int):
 	health -= amount
 	if health <= 0:
-		pass # die
+		animation_player.play("die")
+		await animation_player.animation_finished
+		get_tree().change_scene_to_file("res://restart_menu.tscn")
 	label.text = "Health: " + str(health)
 	SignalBus.set_health.emit(health-amount)
 

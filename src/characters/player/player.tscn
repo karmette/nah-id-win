@@ -122,6 +122,32 @@ tracks/2/keys = {
 "values": [0.0]
 }
 
+[sub_resource type="Animation" id="Animation_rpf03"]
+resource_name = "die"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
 [sub_resource type="Animation" id="Animation_gqopd"]
 resource_name = "idle"
 loop_mode = 1
@@ -199,6 +225,7 @@ tracks/3/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_icpky"]
 _data = {
 &"RESET": SubResource("Animation_on558"),
+&"die": SubResource("Animation_rpf03"),
 &"idle": SubResource("Animation_gqopd"),
 &"moving": SubResource("Animation_5dc8e")
 }
@@ -376,8 +403,8 @@ initial_velocity_max = 510.33
 gravity = Vector3(0, 0, 0)
 linear_accel_min = -256.74
 linear_accel_max = -256.74
-scale_min = 2.45
-scale_max = 3.6499999
+scale_min = 6.35
+scale_max = 6.35
 scale_curve = SubResource("CurveTexture_rpf03")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dirf7"]

@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://bl2db40ivkx7v"]
+
+[ext_resource type="Script" uid="uid://d0bmqjad5ubon" path="res://restart_menu.gd" id="1_p6vsd"]
+[ext_resource type="FontFile" uid="uid://b8wvn8y1nwjdn" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="1_qui76"]
+
+[node name="RestartMenu" type="Node2D" unique_id=914300646]
+script = ExtResource("1_p6vsd")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1756206813]
+offset_left = -6209.0
+offset_top = -3537.0
+offset_right = 8128.0
+offset_bottom = 4616.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="." unique_id=687438003]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 691.0
+offset_top = 404.0
+offset_right = 1282.0
+offset_bottom = 557.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_qui76")
+theme_override_font_sizes/font_size = 112
+text = "YOU DIED."
+horizontal_alignment = 1
+
+[node name="Restart" type="Button" parent="." unique_id=1003878061]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 724.0
+offset_top = 585.0
+offset_right = 1192.0
+offset_bottom = 670.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_qui76")
+theme_override_font_sizes/font_size = 56
+text = "Restart Level?"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=705300504]
+position = Vector2(962, 542)
+
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
