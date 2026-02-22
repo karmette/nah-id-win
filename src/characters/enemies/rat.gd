@@ -4,6 +4,8 @@ extends CharacterBody2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 @onready var hit_particles: GPUParticles2D = $HitParticles
+@onready var sfx_damaged: AudioStreamPlayer2D = $sfx_damaged
+@onready var sfx_squeak: AudioStreamPlayer2D = $sfx_squeak
 
 @export var health = 20
 @export var knockback_force = 750
@@ -194,6 +196,10 @@ func cohesion() -> Vector2:
 	return Vector2.ZERO
 
 func take_damage(amount: int, direction: Vector2, force):
+	sfx_damaged.pitch_scale = randf_range(0.8, 1.2)
+	sfx_damaged.volume_db = randf_range(-10, -8)
+	sfx_squeak.pitch_scale = randf_range(0.8, 1.2)
+	sfx_squeak.volume_db = randf_range(-10, -8)
 	hit_particles.rotation = direction.angle()
 	hit_particles.restart()
 	sprite_2d.pause()
@@ -214,4 +220,6 @@ func die():
 		pickup.pickup_r = Constants.PICKUPS.milk
 		SceneManager.current_scene.add_child.call_deferred(pickup)
 		pickup.position = self.position
+	animation_player.play("take_damage")
+	await animation_player.animation_finished
 	self.queue_free()

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bg6mp86af2hck" path="res://assets/sprites/cheese/cheese-Sheet-Sheet.png" id="2_5dc8e"]
 [ext_resource type="Shader" uid="uid://dpxkjrfwngt8v" path="res://characters/damage_flash.gdshader" id="2_c6leb"]
 [ext_resource type="PackedScene" uid="uid://cgit7jq7kxjxs" path="res://characters/player/fork.tscn" id="4_5dc8e"]
+[ext_resource type="AudioStream" uid="uid://mqcxi726i1gb" path="res://assets/sfx/squish.mp3" id="4_idpv6"]
 [ext_resource type="Script" uid="uid://dg28xn70kal2i" path="res://characters/player/rotation.gd" id="4_ixbpm"]
 [ext_resource type="PackedScene" uid="uid://c8nj3i52cehwn" path="res://characters/player/blue_cheese.tscn" id="6_dirf7"]
 [ext_resource type="Texture2D" uid="uid://btm08sl4cupxg" path="res://assets/particles/hit_effect.png" id="7_dirf7"]
@@ -164,6 +165,35 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [3, 2, 1, 2]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AnimationPlayer/sfx_squish")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.051827572,
+"stream": ExtResource("4_idpv6")
+}],
+"times": PackedFloat32Array(0.33333334)
+}
+tracks/2/use_blend = true
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.33333334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"vary_squish"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_icpky"]
@@ -366,6 +396,9 @@ animation = &"idle"
 root_node = NodePath("../Cheese")
 libraries/ = SubResource("AnimationLibrary_icpky")
 autoplay = &"idle"
+
+[node name="sfx_squish" type="AudioStreamPlayer2D" parent="AnimationPlayer" unique_id=1115253162]
+pitch_scale = 0.8
 
 [node name="OverVFX" type="AnimationPlayer" parent="." unique_id=1074626637]
 libraries/ = SubResource("AnimationLibrary_dirf7")

@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var invinciblity_timer: Timer = $InvinciblityTimer
 @onready var over_vfx: AnimationPlayer = $OverVFX
 @onready var label: Label = $Label
+@onready var sfx_squish: AudioStreamPlayer2D = $AnimationPlayer/sfx_squish
 
 @export var speed = 400
 var health = 100
@@ -80,3 +81,7 @@ func heal(amount: int):
 		SignalBus.set_health.emit(health)
 		return
 	SignalBus.set_health.emit(health+amount)
+	
+func vary_squish():
+	sfx_squish.pitch_scale = randf_range(0.8, 1.2)
+	sfx_squish.volume_db = randf_range(-10, -8)

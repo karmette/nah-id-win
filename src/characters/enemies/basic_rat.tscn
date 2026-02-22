@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://dqfe3qn5ji0i5"]
 
 [ext_resource type="Script" uid="uid://d2mn8lr83u0gb" path="res://characters/enemies/basic_rat.gd" id="1_avvud"]
-[ext_resource type="Shader" path="res://characters/damage_flash.gdshader" id="2_bg117"]
+[ext_resource type="Shader" uid="uid://dpxkjrfwngt8v" path="res://characters/damage_flash.gdshader" id="2_bg117"]
 [ext_resource type="Texture2D" uid="uid://7xonakugoerl" path="res://assets/sprites/simple_rat/idle rat.png" id="3_h4pp4"]
+[ext_resource type="Animation" uid="uid://b5jcd45e3it6r" path="res://assets/anims/take_damage.res" id="4_16glv"]
 [ext_resource type="Texture2D" uid="uid://btm08sl4cupxg" path="res://assets/particles/hit_effect.png" id="4_k1tnx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ggbst"]
@@ -67,38 +68,15 @@ tracks/0/keys = {
 "values": [0.0]
 }
 
-[sub_resource type="Animation" id="Animation_toq4n"]
-resource_local_to_scene = true
-resource_name = "take_damage"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:material:shader_parameter/flash_value")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, 1.0, 0.0]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"values": []
-}
+[sub_resource type="Animation" id="Animation_16glv"]
+resource_name = "die"
+length = 0.5
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ggbst"]
 _data = {
 &"RESET": SubResource("Animation_1ohc2"),
-&"take_damage": SubResource("Animation_toq4n")
+&"die": SubResource("Animation_16glv"),
+&"take_damage": ExtResource("4_16glv")
 }
 
 [sub_resource type="Curve" id="Curve_ggbst"]
@@ -181,6 +159,10 @@ collision_mask = 4
 position = Vector2(-7, 8)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_u8tuc")
+
+[node name="sfx_damaged" type="AudioStreamPlayer2D" parent="." unique_id=706445399]
+
+[node name="sfx_squeak" type="AudioStreamPlayer2D" parent="." unique_id=257369287]
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
