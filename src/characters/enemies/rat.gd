@@ -21,11 +21,11 @@ var knockback_velocity: Vector2 = Vector2.ZERO
 
 
 # Flocking weights
-@export var seek_weight: float = 1.0
-@export var avoid_weight: float = 2.0
-@export var separation_weight: float = 1.8
-@export var alignment_weight: float = 0.6
-@export var cohesion_weight: float = 0.5
+@export var seek_weight: float = 0.8
+@export var avoid_weight: float = 2.5
+@export var separation_weight: float = 3.5   # Increase a lot
+@export var alignment_weight: float = 0.4
+@export var cohesion_weight: float = 0.3
 
 # Flocking radii
 @export var separation_radius: float = 35.0
@@ -63,7 +63,7 @@ func _physics_process(delta):
 		
 		velocity += steering * delta
 		velocity = velocity.limit_length(max_speed)
-		
+		steering += Vector2(randf_range(-50, 50), randf_range(-50, 50)) * 0.1
 	move_and_slide()
 
 	# if velocity.length() > 5:
@@ -75,12 +75,28 @@ func _physics_process(delta):
 # ========================
 
 func seek() -> Vector2:
-	var desired = (player.global_position - global_position).normalized() * max_speed
-	if desired.x < 0:
+	var to_player = player.global_position - global_position
+	var distance = to_player.length()
+	
+	if distance == 0:
+		return Vector2.ZERO
+	
+	var desired_speed = max_speed
+	
+	# Slow down when close to player (arrival behavior)
+	var slow_radius = 50.0
+	if distance < slow_radius:
+		desired_speed = max_speed * (distance / slow_radius)
+	
+	var desired_velocity = to_player.normalized() * desired_speed
+	
+	# Flip sprite
+	if desired_velocity.x < 0:
 		sprite_2d.flip_h = false
-	elif desired.x > 0:
+	elif desired_velocity.x > 0:
 		sprite_2d.flip_h = true
-	return desired - velocity
+		
+	return desired_velocity - velocity
 
 
 # ========================
@@ -115,11 +131,17 @@ func separation() -> Vector2:
 
 		var dist = global_position.distance_to(other.global_position)
 		if dist < separation_radius and dist > 0:
-			force += (global_position - other.global_position).normalized() / dist
+			var push = (global_position - other.global_position).normalized()
+			
+			# Stronger when closer
+			push *= (separation_radius - dist) / separation_radius
+			
+			force += push
 			count += 1
 
 	if count > 0:
 		force /= count
+		force = force.normalized() * max_force
 
 	return force
 

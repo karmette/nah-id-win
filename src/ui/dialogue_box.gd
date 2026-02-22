@@ -1,6 +1,7 @@
 extends Control
 
 @onready var text_label: RichTextLabel = $DialogueBox/DialogueText
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 var timer: Timer
 
 var letter_time: float = 0.03
@@ -60,6 +61,8 @@ func _display_letter():
 			timer.start(space_time)
 		_:
 			timer.start(letter_time)
+			audio_player.play()
+
 
 func _on_letter_display_timer_timeout() -> void:
 	_display_letter()
