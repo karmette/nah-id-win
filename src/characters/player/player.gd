@@ -11,6 +11,7 @@ var dash_velocity: Vector2 = Vector2.ZERO
 var decay = 2000
 var dash_force = 1
 
+@export var can_move = true
 @export var invincible = false
 
 func get_input():
@@ -22,14 +23,14 @@ func dash(direction, force: int):
 	dash_velocity = direction * dash_force #sets knockback
 
 func _physics_process(delta):
-	get_input()
 	
-	if dash_velocity.length() > 0:
+	if dash_velocity.length() != 0:
 		velocity = dash_velocity
 		dash_velocity = dash_velocity.move_toward(Vector2.ZERO, decay * delta)
 	else:
 		# Normal movement logic here 
-		get_input()
+		if can_move:
+			get_input()
 		
 	move_and_slide()
 	

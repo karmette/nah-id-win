@@ -19,7 +19,8 @@ var thrust_dash_force_min = 500
 var thrust_knockback_force_max = 750
 var thrust_knockback_force_min = 250
 
-var swing_knockback_force = 250
+var swing_knockback_force = 400
+var swing_recoil_force = 300
 
 var decay = 2000
 
@@ -78,6 +79,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		enemy.take_damage(damage, direction, knockback_force)
 	elif animation_player.current_animation == "swing":
 		enemy.take_damage(swing_damage, direction, swing_knockback_force)
+		player.dash((-(get_global_mouse_position() - global_position)).normalized(), swing_recoil_force)
 
 func determine_charge_value():
 	charge = animation_player.current_animation_position / 2
