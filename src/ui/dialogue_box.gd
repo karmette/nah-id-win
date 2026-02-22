@@ -27,7 +27,6 @@ func skip_dialogue():
 	text_label.visible_characters = text_label.text.length()
 	diag_finished = true
 
-
 func _unhandled_key_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_accept"):
 		# emit the Timer's timeout signal so awaiting code resumes
@@ -46,6 +45,7 @@ func dialogue_sequence(c: String):
 		text_label.text = line.text
 		_display_letter()
 		await next_d
+	SignalBus.cutscene_finished.emit()
 	self.visible = false
 
 func _display_letter():

@@ -4,7 +4,9 @@ extends Node2D
 var current_level: Node2D
 
 func _ready() -> void:
-	load_level("sewers")
+	match GameManager.current_level:
+		0:
+			load_level("sewers")
 
 func load_level(level_name: String):
 	if not Constants.LEVELS.has(level_name):

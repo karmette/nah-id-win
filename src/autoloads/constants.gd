@@ -1,5 +1,10 @@
 extends Node
 
+const SCENES: Dictionary[String, String] = {
+	"main_game":"uid://c722daqyojicv",
+	"cutscene_one":"uid://cenyyrkjnngh6"
+}
+
 const DIALOG = {
 	"cutscene_one":"res://assets/json/dialogue/cheese.json"
 }

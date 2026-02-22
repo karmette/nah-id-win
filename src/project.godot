@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="nah-id-win"
+run/main_scene="uid://br8kyglkrqbfw"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -21,6 +22,7 @@ JsonHelper="*uid://dxfqjsc6fqdkn"
 SignalBus="*uid://braci45cwt7c4"
 SceneManager="*uid://rtyveqbrn7m3"
 GlobalVar="*uid://bcm4o2f4cfm56"
+GameManager="*uid://fogyl30karxy"
 
 [display]
 
