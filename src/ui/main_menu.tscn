@@ -1,5 +1,9 @@
 [gd_scene format=3 uid="uid://br8kyglkrqbfw"]
 
+[ext_resource type="Texture2D" uid="uid://223mo5nd63fk" path="res://assets/fonts/title_text.png" id="1_0dkrt"]
+[ext_resource type="Script" uid="uid://btx02oxy7v68u" path="res://ui/main.gd" id="1_wk0pr"]
+[ext_resource type="FontFile" uid="uid://b8wvn8y1nwjdn" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="2_wk0pr"]
+
 [node name="MainMenu" type="Control" unique_id=796966704]
 layout_mode = 3
 anchors_preset = 15
@@ -7,17 +11,101 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_wk0pr")
 
-[node name="Label" type="Label" parent="." unique_id=1470910211]
+[node name="Main" type="Control" parent="." unique_id=1127876829]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="TextureRect" parent="Main" unique_id=1635489204]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -360.0
-offset_right = 360.0
-offset_bottom = 353.0
+offset_left = -200.0
+offset_top = 126.000015
+offset_right = 200.0
+offset_bottom = 186.00002
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 79
-text = "ultra cheese"
+scale = Vector2(3.7923405, 3.7923405)
+pivot_offset = Vector2(200, 0)
+texture = ExtResource("1_0dkrt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main" unique_id=1556953657]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.75
+offset_top = -46.0
+offset_right = 270.75
+offset_bottom = 322.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="Main/VBoxContainer" unique_id=1784953985]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_wk0pr")
+theme_override_font_sizes/font_size = 70
+text = "PLAY"
+
+[node name="PlayButton2" type="Button" parent="Main/VBoxContainer" unique_id=893889024]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_wk0pr")
+theme_override_font_sizes/font_size = 70
+text = "CREDITS"
+
+[node name="PlayButton3" type="Button" parent="Main/VBoxContainer" unique_id=828840283]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_wk0pr")
+theme_override_font_sizes/font_size = 70
+text = "OPTIONS"
+
+[node name="PlayButton4" type="Button" parent="Main/VBoxContainer" unique_id=1114742831]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_wk0pr")
+theme_override_font_sizes/font_size = 70
+text = "QUIT"
+
+[node name="Credits" type="Control" parent="." unique_id=680185694]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Credits" unique_id=1631870027]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -117.0
+offset_top = -63.5
+offset_right = 117.0
+offset_bottom = 63.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_wk0pr")
+theme_override_font_sizes/font_size = 85
+text = "Credits
+
+Programming & Game Design
+Aaron Yang & Arya Witjaksana
+
+Art & Animation
+Mona Korani"
 horizontal_alignment = 1
-vertical_alignment = 1
+
+[connection signal="pressed" from="Main/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]

@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var animation_player: AnimationPlayer = $ForkSprite/AnimationPlayer
 @onready var fork_sprite: Sprite2D = $ForkSprite
-@onready var charge_length: Timer = $ChargeLength
+#@onready var charge_length: Timer = $ChargeLength
 
 var on_cooldown = false
 
