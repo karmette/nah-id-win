@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cenyyrkjnngh6"]
 
+[ext_resource type="Script" uid="uid://det7lov1s5tud" path="res://ui/cutscene_one.gd" id="1_cx4cr"]
 [ext_resource type="PackedScene" uid="uid://c3q5s3oebia8u" path="res://ui/dialogue_box.tscn" id="1_otcrv"]
 
 [node name="CutsceneOne" type="Control" unique_id=183640016]
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_cx4cr")
 
 [node name="Background" type="ColorRect" parent="." unique_id=1119347645]
 layout_mode = 1

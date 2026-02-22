@@ -13,6 +13,7 @@ func _ready() -> void:
 	self.visible = false
 	timer = Timer.new()
 	self.add_child.call_deferred(timer)
+	signal_connect.call_deferred()
 
 func signal_connect():
 	timer.timeout.connect(_on_letter_display_timer_timeout)
