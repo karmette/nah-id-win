@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bhmbikcc8o8j" path="res://characters/player/player.gd" id="1_xxgcw"]
 [ext_resource type="Texture2D" uid="uid://bg6mp86af2hck" path="res://assets/sprites/cheese/cheese-Sheet-Sheet.png" id="2_5dc8e"]
-[ext_resource type="Shader" uid="uid://dpxkjrfwngt8v" path="res://characters/damage_flash.gdshader" id="2_c6leb"]
+[ext_resource type="Shader" path="res://characters/damage_flash.gdshader" id="2_c6leb"]
 [ext_resource type="PackedScene" uid="uid://cgit7jq7kxjxs" path="res://characters/player/fork.tscn" id="4_5dc8e"]
 [ext_resource type="Script" uid="uid://dg28xn70kal2i" path="res://characters/player/rotation.gd" id="4_ixbpm"]
 [ext_resource type="PackedScene" uid="uid://c8nj3i52cehwn" path="res://characters/player/blue_cheese.tscn" id="6_dirf7"]
@@ -339,9 +339,11 @@ position = Vector2(0, 19)
 script = ExtResource("4_ixbpm")
 
 [node name="Fork" parent="WeaponOrigin" unique_id=685591835 instance=ExtResource("4_5dc8e")]
+visible = false
 
 [node name="BlueCheese" parent="WeaponOrigin" unique_id=519013780 instance=ExtResource("6_dirf7")]
 visible = false
+charged = false
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=677610820]
 collision_layer = 4

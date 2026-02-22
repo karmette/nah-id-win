@@ -3,6 +3,8 @@ extends Node2D
 
 var current_level: Node2D
 
+signal enemies_died
+
 func _ready() -> void:
 	match GameManager.current_level:
 		0:
@@ -17,7 +19,16 @@ func load_level(level_name: String):
 	var scene: PackedScene = Constants.LEVELS[level_name]
 	current_level = scene.instantiate()   # this is a Node
 	add_child(current_level)
-	begin_wave(2, 1, true, true)
+	if level_name == "sewers":
+		level_1()
+	
+
+func level_1():
+	await SignalBus.pickup_item
+	for i in range(10):
+		begin_wave.call_deferred(1, 1)
+		await enemies_died
+	GameManager.next_level()
 
 func begin_wave(rate: float = 1.0, stat_scale: float = 1.0, basic: bool = true, fast: bool = false):
 	var enemy_count: int = int(rate*5)
@@ -41,3 +52,7 @@ func begin_wave(rate: float = 1.0, stat_scale: float = 1.0, basic: bool = true, 
 		enemy.scale *= 2.075
 		enemy.health *= stat_scale
 		add_child(enemy)
+
+func _process(delta: float) -> void:
+	if get_tree().get_nodes_in_group("enemies").is_empty():
+		enemies_died.emit()

@@ -27,7 +27,7 @@ var decay = 2000
 
 var charge = 0
 var charging = false
-var active = true
+var active = false
 
 func _ready():
 	SignalBus.toggle_attacking.connect(_on_attacking_toggled)

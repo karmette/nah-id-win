@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var animation_player: AnimationPlayer = $AnimatedSprite2D/AnimationPlayer
-const bullet = preload("res://cheese_bullet.tscn")
+const BULLET = preload("res://cheese_bullet.tscn")
 @onready var bullet_spawn: Marker2D = $AnimatedSprite2D/BulletSpawn
 
 var active = false
@@ -50,7 +50,7 @@ func toggle_player_movement(able_to_move: bool):
 func change_player_speed(amount: int):
 	player.speed = amount
 
-func _input(event):
+func _input(_event):
 	if active:
 		if Input.is_action_just_pressed("shoot") and not on_cooldown:
 			animation_player.play("shoot")
@@ -63,7 +63,7 @@ func _input(event):
 			change_player_speed(400)
 
 func spawn_bullet(type: String):
-	var current_bullet = bullet.instantiate()
+	var current_bullet = BULLET.instantiate()
 	if type == "charged":
 		current_bullet.damage = 20
 		current_bullet.speed = 400
