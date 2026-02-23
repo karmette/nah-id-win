@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://223mo5nd63fk" path="res://assets/fonts/title_text.png" id="1_0dkrt"]
 [ext_resource type="Script" uid="uid://btx02oxy7v68u" path="res://ui/main.gd" id="1_wk0pr"]
+[ext_resource type="Texture2D" uid="uid://dxvrpxi4ree2t" path="res://assets/menu game.png" id="2_rmr83"]
 [ext_resource type="FontFile" uid="uid://b8wvn8y1nwjdn" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="2_wk0pr"]
 
 [node name="MainMenu" type="Control" unique_id=796966704]
@@ -20,6 +21,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Main" unique_id=1594626199]
+modulate = Color(0.52906674, 0.5290667, 0.5290667, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_rmr83")
 
 [node name="Title" type="TextureRect" parent="Main" unique_id=1635489204]
 layout_mode = 1

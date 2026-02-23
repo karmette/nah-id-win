@@ -55,10 +55,10 @@ func _input(_event):
 		if Input.is_action_just_pressed("shoot") and not on_cooldown:
 			animation_player.play("shoot")
 			
-		if Input.is_action_pressed("charge_shoot") and not on_cooldown:
+		if Input.is_action_pressed("thrust") and not on_cooldown:
 			animation_player.play("charging_shoot")
 	
-		if Input.is_action_just_released("charge_shoot") and not on_cooldown:
+		if Input.is_action_just_released("thrust") and not on_cooldown:
 			animation_player.play("RESET")
 			change_player_speed(400)
 
@@ -73,4 +73,4 @@ func spawn_bullet(type: String):
 		current_bullet.speed = 600
 	current_bullet.global_position = bullet_spawn.global_position
 	current_bullet.global_rotation = global_rotation
-	get_tree().current_scene.add_child(current_bullet)
+	SceneManager.current_scene.add_child(current_bullet)

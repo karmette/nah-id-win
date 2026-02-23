@@ -45,7 +45,7 @@ func dialogue_sequence(c: String):
 		text_label.visible_characters = -1
 		text_label.text = line.text
 		_display_letter()
-		await get_tree().create_timer(5).timeout
+		await next_d
 	SignalBus.cutscene_finished.emit()
 	self.visible = false
 

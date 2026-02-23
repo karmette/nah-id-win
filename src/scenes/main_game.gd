@@ -34,9 +34,10 @@ func level_1():
 	pickup.position = Vector2(0,0)
 	await SignalBus.pickup_item
 	SignalBus.play_music.emit("start")
-	for i in range(10):
+	for i in range(5):
 		begin_wave.call_deferred(1, 1, true, true)
 		await enemies_died
+		await get_tree().create_timer(2).timeout
 	SignalBus.fade.emit()
 	await get_tree().create_timer(3).timeout
 	GameManager.next_level()
@@ -48,9 +49,10 @@ func level_2():
 	SceneManager.current_scene.add_child.call_deferred(pickup)
 	pickup.position = Vector2(0,0)
 	await SignalBus.pickup_item
-	for i in range(10):
+	for i in range(5):
 		begin_wave.call_deferred(4, 2, true, true, true)
 		await enemies_died
+		await get_tree().create_timer(2).timeout
 	SignalBus.fade.emit()
 	await get_tree().create_timer(3).timeout
 	GameManager.next_level()
