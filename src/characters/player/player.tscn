@@ -511,6 +511,7 @@ scale_curve = SubResource("CurveTexture_rpf03")
 radius = 79.30952
 
 [node name="Player" type="CharacterBody2D" unique_id=722093044 groups=["player"]]
+y_sort_enabled = true
 script = ExtResource("1_xxgcw")
 
 [node name="Cheese" type="AnimatedSprite2D" parent="." unique_id=2036196822]

@@ -108,22 +108,26 @@ radius = 13.0
 height = 56.0
 
 [node name="BasicRat" type="CharacterBody2D" unique_id=1223147141 groups=["enemies"]]
+y_sort_enabled = true
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_avvud")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=2123982186]
 material = SubResource("ShaderMaterial_ggbst")
+position = Vector2(4, -27)
 sprite_frames = SubResource("SpriteFrames_ki21s")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.18070574
 
 [node name="ForwardRay" type="RayCast2D" parent="." unique_id=464449794]
+position = Vector2(4, -27)
 target_position = Vector2(0, 32)
 collide_with_bodies = false
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=856572981]
+position = Vector2(4, -27)
 collision_layer = 2
 collision_mask = 2
 
@@ -137,6 +141,7 @@ shape = SubResource("CapsuleShape2D_toq4n")
 libraries/ = SubResource("AnimationLibrary_ggbst")
 
 [node name="HitParticles" type="GPUParticles2D" parent="." unique_id=1776158011]
+position = Vector2(4, -27)
 emitting = false
 amount = 6
 texture = ExtResource("4_k1tnx")
@@ -147,11 +152,12 @@ randomness = 0.65
 process_material = SubResource("ParticleProcessMaterial_1ohc2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2071975691]
-position = Vector2(-7.4976377, 8.884743)
+position = Vector2(-3.4976377, -18.115257)
 rotation = 1.5861676
 shape = SubResource("RectangleShape2D_ggbst")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1309639325]
+position = Vector2(4, -27)
 collision_layer = 4
 collision_mask = 4
 
@@ -161,8 +167,10 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_u8tuc")
 
 [node name="sfx_damaged" type="AudioStreamPlayer2D" parent="." unique_id=706445399]
+position = Vector2(4, -27)
 
 [node name="sfx_squeak" type="AudioStreamPlayer2D" parent="." unique_id=257369287]
+position = Vector2(4, -27)
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

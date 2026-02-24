@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bbuim7ilb550q" path="res://ui/fader.tscn" id="9_2l77h"]
 
 [node name="MainGame" type="Node2D" unique_id=730573980]
+y_sort_enabled = true
 script = ExtResource("1_s3esy")
 
 [node name="Player" parent="." unique_id=722093044 instance=ExtResource("4_ipu61")]

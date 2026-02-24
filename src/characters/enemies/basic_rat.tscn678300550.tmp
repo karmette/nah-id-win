@@ -1,75 +1,48 @@
-[gd_scene format=3 uid="uid://cu0a6br33xy46"]
+[gd_scene format=3 uid="uid://dqfe3qn5ji0i5"]
 
-[ext_resource type="Script" uid="uid://drdokxxpv02ag" path="res://characters/enemies/fast_rat.gd" id="1_1c8wr"]
-[ext_resource type="Shader" uid="uid://dpxkjrfwngt8v" path="res://characters/damage_flash.gdshader" id="2_1btvc"]
-[ext_resource type="Texture2D" uid="uid://kmbofkrx8hwo" path="res://assets/sprites/rat2-Sheet.png" id="3_1c8wr"]
-[ext_resource type="Texture2D" uid="uid://btm08sl4cupxg" path="res://assets/particles/hit_effect.png" id="4_n6mm1"]
-[ext_resource type="Animation" uid="uid://b5jcd45e3it6r" path="res://assets/anims/take_damage.res" id="4_sbc85"]
+[ext_resource type="Script" uid="uid://d2mn8lr83u0gb" path="res://characters/enemies/basic_rat.gd" id="1_avvud"]
+[ext_resource type="Shader" uid="uid://dpxkjrfwngt8v" path="res://characters/damage_flash.gdshader" id="2_bg117"]
+[ext_resource type="Texture2D" uid="uid://7xonakugoerl" path="res://assets/sprites/simple_rat/idle rat.png" id="3_h4pp4"]
+[ext_resource type="Texture2D" uid="uid://ca0ysrqky2iar" path="res://assets/sprites/simple_rat/normal_rat_shadow.png" id="4_3g7bl"]
+[ext_resource type="Animation" uid="uid://b5jcd45e3it6r" path="res://assets/anims/take_damage.res" id="4_16glv"]
+[ext_resource type="Texture2D" uid="uid://btm08sl4cupxg" path="res://assets/particles/hit_effect.png" id="4_k1tnx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ggbst"]
 resource_local_to_scene = true
-shader = ExtResource("2_1btvc")
+shader = ExtResource("2_bg117")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_value = 0.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1btvc"]
-atlas = ExtResource("3_1c8wr")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggbst"]
+atlas = ExtResource("3_h4pp4")
 region = Rect2(0, 0, 96, 96)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l2p84"]
-atlas = ExtResource("3_1c8wr")
+[sub_resource type="AtlasTexture" id="AtlasTexture_toq4n"]
+atlas = ExtResource("3_h4pp4")
 region = Rect2(96, 0, 96, 96)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n6mm1"]
-atlas = ExtResource("3_1c8wr")
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8tuc"]
+atlas = ExtResource("3_h4pp4")
 region = Rect2(192, 0, 96, 96)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_50iku"]
-atlas = ExtResource("3_1c8wr")
+[sub_resource type="AtlasTexture" id="AtlasTexture_f76jb"]
+atlas = ExtResource("3_h4pp4")
 region = Rect2(288, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fv5hp"]
-atlas = ExtResource("3_1c8wr")
-region = Rect2(384, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4c7yy"]
-atlas = ExtResource("3_1c8wr")
-region = Rect2(480, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s08sr"]
-atlas = ExtResource("3_1c8wr")
-region = Rect2(576, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fqoj8"]
-atlas = ExtResource("3_1c8wr")
-region = Rect2(672, 0, 96, 96)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ki21s"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1btvc")
+"texture": SubResource("AtlasTexture_ggbst")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l2p84")
+"texture": SubResource("AtlasTexture_toq4n")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_n6mm1")
+"texture": SubResource("AtlasTexture_u8tuc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_50iku")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fv5hp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4c7yy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s08sr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fqoj8")
+"texture": SubResource("AtlasTexture_f76jb")
 }],
 "loop": true,
 "name": &"idle",
@@ -77,7 +50,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_toq4n"]
-height = 50.0
+radius = 14.5
+height = 68.0
 
 [sub_resource type="Animation" id="Animation_1ohc2"]
 resource_local_to_scene = true
@@ -95,10 +69,15 @@ tracks/0/keys = {
 "values": [0.0]
 }
 
+[sub_resource type="Animation" id="Animation_16glv"]
+resource_name = "die"
+length = 0.5
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ggbst"]
 _data = {
 &"RESET": SubResource("Animation_1ohc2"),
-&"take_damage": ExtResource("4_sbc85")
+&"die": SubResource("Animation_16glv"),
+&"take_damage": ExtResource("4_16glv")
 }
 
 [sub_resource type="Curve" id="Curve_ggbst"]
@@ -123,39 +102,52 @@ scale_max = 2.1
 scale_curve = SubResource("CurveTexture_toq4n")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ggbst"]
-size = Vector2(12.714699, 27.37004)
+size = Vector2(20, 34.997047)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u8tuc"]
-radius = 11.0
-height = 48.0
+radius = 13.0
+height = 56.0
 
-[node name="FastRat" type="CharacterBody2D" unique_id=1223147141 groups=["enemies"]]
-y_sort_enabled = true
+[node name="BasicRat" type="CharacterBody2D" unique_id=1223147141 groups=["enemies"]]
 collision_layer = 4
 collision_mask = 4
-script = ExtResource("1_1c8wr")
+script = ExtResource("1_avvud")
+health = null
+knockback_force = null
+knockback_decay = null
+max_speed = null
+max_force = null
+look_ahead = null
+seek_weight = null
+avoid_weight = null
+separation_weight = null
+alignment_weight = null
+cohesion_weight = null
+separation_radius = null
+neighbor_radius = null
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=2120715544]
+modulate = Color(1, 1, 1, 0.57254905)
+position = Vector2(-6, 21)
+texture = ExtResource("4_3g7bl")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=2123982186]
 material = SubResource("ShaderMaterial_ggbst")
-position = Vector2(-0.5999984, -16.599997)
-scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_ki21s")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.18070574
-flip_h = true
 
 [node name="ForwardRay" type="RayCast2D" parent="." unique_id=464449794]
-position = Vector2(-0.5999985, -16.599998)
 target_position = Vector2(0, 32)
 collide_with_bodies = false
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=856572981]
-position = Vector2(0.40000153, -21.599998)
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=178788126]
+visible = false
 position = Vector2(3, 8)
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_toq4n")
@@ -164,10 +156,9 @@ shape = SubResource("CapsuleShape2D_toq4n")
 libraries/ = SubResource("AnimationLibrary_ggbst")
 
 [node name="HitParticles" type="GPUParticles2D" parent="." unique_id=1776158011]
-position = Vector2(-0.5999985, -16.599998)
 emitting = false
 amount = 6
-texture = ExtResource("4_n6mm1")
+texture = ExtResource("4_k1tnx")
 lifetime = 0.25
 one_shot = true
 explosiveness = 1.0
@@ -175,12 +166,11 @@ randomness = 0.65
 process_material = SubResource("ParticleProcessMaterial_1ohc2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2071975691]
-position = Vector2(4.8143144, -14.166943)
+position = Vector2(-7.4976377, 8.884743)
 rotation = 1.5861676
 shape = SubResource("RectangleShape2D_ggbst")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1309639325]
-position = Vector2(10.400002, -21.599998)
 collision_layer = 4
 collision_mask = 4
 
@@ -189,11 +179,9 @@ position = Vector2(-7, 8)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_u8tuc")
 
-[node name="sfx_damaged" type="AudioStreamPlayer2D" parent="." unique_id=2070210565]
-position = Vector2(-0.5999985, -16.599998)
+[node name="sfx_damaged" type="AudioStreamPlayer2D" parent="." unique_id=706445399]
 
-[node name="sfx_squeak" type="AudioStreamPlayer2D" parent="." unique_id=802356636]
-position = Vector2(-0.5999985, -16.599998)
+[node name="sfx_squeak" type="AudioStreamPlayer2D" parent="." unique_id=257369287]
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
