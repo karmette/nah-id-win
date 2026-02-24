@@ -2,10 +2,11 @@
 
 [ext_resource type="Script" uid="uid://bhmbikcc8o8j" path="res://characters/player/player.gd" id="1_xxgcw"]
 [ext_resource type="Texture2D" uid="uid://bg6mp86af2hck" path="res://assets/sprites/cheese/cheese-Sheet-Sheet.png" id="2_5dc8e"]
-[ext_resource type="Shader" path="res://characters/damage_flash.gdshader" id="2_c6leb"]
+[ext_resource type="Shader" uid="uid://dpxkjrfwngt8v" path="res://characters/damage_flash.gdshader" id="2_c6leb"]
 [ext_resource type="PackedScene" uid="uid://cgit7jq7kxjxs" path="res://characters/player/fork.tscn" id="4_5dc8e"]
 [ext_resource type="AudioStream" uid="uid://mqcxi726i1gb" path="res://assets/sfx/squish.mp3" id="4_idpv6"]
 [ext_resource type="Script" uid="uid://dg28xn70kal2i" path="res://characters/player/rotation.gd" id="4_ixbpm"]
+[ext_resource type="AudioStream" uid="uid://beyng5w20nkxy" path="res://assets/sfx/player_hit.mp3" id="5_rpf03"]
 [ext_resource type="PackedScene" uid="uid://c8nj3i52cehwn" path="res://characters/player/blue_cheese.tscn" id="6_dirf7"]
 [ext_resource type="Texture2D" uid="uid://btm08sl4cupxg" path="res://assets/particles/hit_effect.png" id="7_dirf7"]
 
@@ -121,31 +122,17 @@ tracks/2/keys = {
 "update": 0,
 "values": [0.0]
 }
-
-[sub_resource type="Animation" id="Animation_rpf03"]
-resource_name = "die"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/flash_value")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 0.0]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("..")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"values": []
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Death:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_gqopd"]
@@ -225,7 +212,6 @@ tracks/3/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_icpky"]
 _data = {
 &"RESET": SubResource("Animation_on558"),
-&"die": SubResource("Animation_rpf03"),
 &"idle": SubResource("Animation_gqopd"),
 &"moving": SubResource("Animation_5dc8e")
 }
@@ -280,6 +266,30 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Death:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:can_move")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_idpv6"]
 resource_name = "dash_anim"
@@ -319,6 +329,63 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_x5dtk"]
+resource_name = "die"
+length = 3.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Death:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 3.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:can_move")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hurtbox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3.25),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [false],
+"method": &"toggle_player_movement"
+}, {
+"args": [true],
+"method": &"toggle_player_movement"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_c6leb"]
@@ -372,11 +439,27 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer2D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_rpf03")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dirf7"]
 _data = {
 &"RESET": SubResource("Animation_dirf7"),
 &"dash_anim": SubResource("Animation_idpv6"),
+&"die": SubResource("Animation_x5dtk"),
 &"invincible_anim": SubResource("Animation_c6leb")
 }
 
@@ -387,7 +470,7 @@ size = Vector2(128, 99)
 size = Vector2(130, 76)
 
 [sub_resource type="Curve" id="Curve_idpv6"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.29849726), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.99999994, 0.24675322), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_rpf03"]
@@ -401,10 +484,27 @@ spread = 180.0
 initial_velocity_min = 510.33
 initial_velocity_max = 510.33
 gravity = Vector3(0, 0, 0)
-linear_accel_min = -256.74
-linear_accel_max = -256.74
-scale_min = 6.35
-scale_max = 6.35
+linear_accel_min = -281.13998
+linear_accel_max = -281.13998
+scale_min = 5.0
+scale_max = 9.95
+scale_curve = SubResource("CurveTexture_rpf03")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_idpv6"]
+load_path = "res://.godot/imported/hit_effect.png-54091c5dba81267ae90bc6232ce629ac.ctex"
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rpf03"]
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+spread = 180.0
+initial_velocity_min = 510.33
+initial_velocity_max = 510.33
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -281.13998
+linear_accel_max = -281.13998
+scale_min = 5.0
+scale_max = 9.95
 scale_curve = SubResource("CurveTexture_rpf03")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dirf7"]
@@ -466,6 +566,15 @@ explosiveness = 1.0
 randomness = 0.59
 process_material = SubResource("ParticleProcessMaterial_x5dtk")
 
+[node name="Death" type="GPUParticles2D" parent="." unique_id=127997932]
+emitting = false
+amount = 20
+texture = SubResource("CompressedTexture2D_idpv6")
+lifetime = 0.55
+explosiveness = 0.28
+randomness = 0.59
+process_material = SubResource("ParticleProcessMaterial_rpf03")
+
 [node name="PickupArea" type="Area2D" parent="." unique_id=599529908]
 collision_layer = 64
 collision_mask = 64
@@ -481,6 +590,8 @@ offset_top = -41.0
 offset_right = 44.0
 offset_bottom = -18.0
 text = "Health: 100"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2069785242]
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="timeout" from="InvinciblityTimer" to="." method="_on_invinciblity_timer_timeout"]

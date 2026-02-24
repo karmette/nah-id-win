@@ -7,7 +7,7 @@ extends CharacterBody2D
 @onready var sfx_squish: AudioStreamPlayer2D = $AnimationPlayer/sfx_squish
 
 @export var speed = 400
-var health = 100
+var health = 10
 var dash_velocity: Vector2 = Vector2.ZERO
 var decay = 2000
 var dash_force = 1
@@ -63,21 +63,18 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	invincible = true   # ← SET IT HERE IMMEDIATELY
 	
 	take_damage(body.damage)
-	SignalBus.shake_camera.emit(130, 0.2)
-	invinciblity_timer.start()
-	over_vfx.play.call_deferred("invincible_anim")
-
-func shake_screen(intensity_length):
-	SignalBus.shake_camera.emit(130, 0.2)
 
 func take_damage(amount: int):
 	health -= amount
-	if health <= 0:
-		animation_player.play("die")
-		await animation_player.animation_finished
-		get_tree().change_scene_to_file("res://restart_menu.tscn")
-	label.text = "Health: " + str(health)
 	SignalBus.set_health.emit(health-amount)
+	if health <= 0:
+		die()
+	else:
+		SignalBus.shake_camera.emit(130, 0.2)
+		invinciblity_timer.start()
+		over_vfx.play.call_deferred("invincible_anim")
+		
+	label.text = "Health: " + str(health)
 
 func heal(amount: int):
 	health += amount
@@ -89,4 +86,18 @@ func heal(amount: int):
 	
 func vary_squish():
 	sfx_squish.pitch_scale = randf_range(0.8, 1.2)
-	sfx_squish.volume_db = randf_range(-10, -8)
+	sfx_squish.volume_db = randf_range(-16, -14)
+
+func toggle_player_movement(able_to_move: bool):
+	self.can_move = able_to_move
+	if not able_to_move:
+		self.velocity = Vector2.ZERO
+
+func die():
+	SignalBus.player_death_fade.emit()
+	SignalBus.shake_camera.emit(130, 10)
+	over_vfx.play("die")
+	SignalBus.stop_song.emit()
+	await over_vfx.animation_finished
+	SceneManager.goto_scene("res://restart_menu.tscn")
+	

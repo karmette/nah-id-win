@@ -50,12 +50,14 @@ func _on_active_toggled(weapon: String):
 func _input(event):
 	if active:
 		if Input.is_action_just_pressed("swing") and not on_cooldown:
-			animation_player.play("swing")
 			swing_sfx.pitch_scale = randf_range(0.8, 1.2)
-			swing_sfx.volume_db = randf_range(-10, -8)
-			swing_sfx.play()
+			swing_sfx.volume_db = randf_range(-22, -20)
+			animation_player.play("swing")
+			
 			
 		if Input.is_action_pressed("thrust") and not on_cooldown:
+			swing_sfx.pitch_scale = randf_range(0.8, 1.2)
+			swing_sfx.volume_db = randf_range(-22, -20)
 			animation_player.play("charge_thrust")
 			charging = true
 

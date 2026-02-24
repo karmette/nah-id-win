@@ -1,6 +1,7 @@
 [gd_resource type="TileSet" format=3 uid="uid://dxsiaw0683hmx"]
 
 [ext_resource type="Texture2D" uid="uid://dqvip3cdnxioc" path="res://assets/tilemap/main.png" id="1_lrwuk"]
+[ext_resource type="Texture2D" uid="uid://be6m6povyksvx" path="res://assets/tilemap/floor/black.png" id="2_pqqjn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ephjm"]
 texture = ExtResource("1_lrwuk")
@@ -322,6 +323,11 @@ texture_region_size = Vector2i(48, 48)
 13:1/0/terrains_peering_bit/top_side = 0
 13:1/0/terrains_peering_bit/top_right_corner = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dccqg"]
+texture = ExtResource("2_pqqjn")
+texture_region_size = Vector2i(48, 48)
+0:0/0 = 0
+
 [resource]
 tile_size = Vector2i(48, 48)
 physics_layer_0/collision_layer = 5
@@ -333,3 +339,4 @@ terrain_set_1/mode = 2
 terrain_set_1/terrain_0/name = "Walls"
 terrain_set_1/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/1 = SubResource("TileSetAtlasSource_ephjm")
+sources/3 = SubResource("TileSetAtlasSource_dccqg")

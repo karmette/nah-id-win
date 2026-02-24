@@ -1,5 +1,7 @@
 extends AudioStreamPlayer
 
+@onready var music_player: AudioStreamPlayer = $"."
+
 const SONGS = {
 	"start":preload("uid://dkl6unk2sc5vs"),
 	"loop":preload("uid://0hfme686hwag"),
@@ -9,7 +11,8 @@ const SONGS = {
 
 func _ready():
 	SignalBus.play_music.connect(play_song)
-	volume_db -= 10
+	SignalBus.stop_song.connect(stop_song)
+	volume_db -= 30
 
 
 func play_song(s: String):
@@ -22,3 +25,6 @@ func play_song(s: String):
 	else:
 		stream = SONGS.get(s)
 		play()
+
+func stop_song():
+	self.stop()

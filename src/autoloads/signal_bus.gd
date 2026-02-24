@@ -15,8 +15,10 @@ signal set_mana(value: int)
 signal set_health(value: int)
 
 signal play_music(s: String)
+signal stop_song()
 
 signal fade
+signal player_death_fade()
 
 signal add_health(value: int)
 signal update_stamina()

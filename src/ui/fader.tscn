@@ -33,10 +33,27 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_xm6q1"]
+resource_name = "player_death_fade"
+length = 3.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 3.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xm6q1"]
 _data = {
 &"RESET": SubResource("Animation_awlsw"),
-&"fade": SubResource("Animation_exf0h")
+&"fade": SubResource("Animation_exf0h"),
+&"player_death_fade": SubResource("Animation_xm6q1")
 }
 
 [node name="Fader" type="Control" unique_id=721573022]
