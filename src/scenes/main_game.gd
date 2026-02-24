@@ -25,14 +25,15 @@ func load_level(level_name: String):
 		level_1()
 	elif level_name == "sewers2":
 		level_2()
-	
 
 func level_1():
+	SignalBus.toggle_spotlight.emit(true)
 	var pickup = Constants.PICKUP.instantiate()
 	pickup.pickup_r = Constants.PICKUPS.fork
 	SceneManager.current_scene.add_child.call_deferred(pickup)
 	pickup.position = Vector2(0,0)
 	await SignalBus.pickup_item
+	SignalBus.toggle_spotlight.emit(false)
 	SignalBus.changed_weapon_to.emit("fork")
 	SignalBus.play_music.emit("start")
 	for i in range(5):

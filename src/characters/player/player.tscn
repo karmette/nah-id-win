@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://c8nj3i52cehwn" path="res://characters/player/blue_cheese.tscn" id="6_dirf7"]
 [ext_resource type="Texture2D" uid="uid://btm08sl4cupxg" path="res://assets/particles/hit_effect.png" id="7_dirf7"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rpf03"]
+light_mode = 1
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dirf7"]
 shader = ExtResource("2_c6leb")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
@@ -512,6 +515,7 @@ radius = 79.30952
 
 [node name="Player" type="CharacterBody2D" unique_id=722093044 groups=["player"]]
 y_sort_enabled = true
+material = SubResource("CanvasItemMaterial_rpf03")
 script = ExtResource("1_xxgcw")
 
 [node name="Cheese" type="AnimatedSprite2D" parent="." unique_id=2036196822]
