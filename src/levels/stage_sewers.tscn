@@ -16,3 +16,6 @@ offset_top = -1831.0
 offset_right = 3133.0
 offset_bottom = 2105.0
 color = Color(0, 0, 0, 1)
+
+[node name="spawn_point" type="Marker2D" parent="." unique_id=1141836985]
+position = Vector2(0, 167)

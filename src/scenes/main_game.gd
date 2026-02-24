@@ -33,6 +33,7 @@ func level_1():
 	SceneManager.current_scene.add_child.call_deferred(pickup)
 	pickup.position = Vector2(0,0)
 	await SignalBus.pickup_item
+	SignalBus.changed_weapon_to.emit("fork")
 	SignalBus.play_music.emit("start")
 	for i in range(5):
 		begin_wave.call_deferred(1, 1, true, true)

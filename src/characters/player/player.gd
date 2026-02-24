@@ -65,6 +65,7 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	take_damage(body.damage)
 
 func take_damage(amount: int):
+	print(health)
 	health -= amount
 	SignalBus.set_health.emit(health-amount)
 	if health <= 0:
