@@ -7,7 +7,7 @@ extends CharacterBody2D
 @onready var sfx_squish: AudioStreamPlayer2D = $AnimationPlayer/sfx_squish
 
 @export var speed = 400
-var health = 10
+var health = 100
 var dash_velocity: Vector2 = Vector2.ZERO
 var decay = 2000
 var dash_force = 1
