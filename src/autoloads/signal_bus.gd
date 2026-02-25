@@ -19,6 +19,7 @@ signal stop_song()
 
 signal fade
 signal player_death_fade()
+signal toggle_spotlight(on: bool)
 
 signal add_health(value: int)
 signal update_stamina()

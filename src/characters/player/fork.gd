@@ -55,7 +55,7 @@ func _input(event):
 			animation_player.play("swing")
 			
 			
-		if Input.is_action_pressed("thrust") and not on_cooldown:
+		if Input.is_action_just_pressed("thrust") and not on_cooldown:
 			swing_sfx.pitch_scale = randf_range(0.8, 1.2)
 			swing_sfx.volume_db = randf_range(-22, -20)
 			animation_player.play("charge_thrust")

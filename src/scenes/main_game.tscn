@@ -33,7 +33,7 @@ offset_left = 1.0
 offset_top = -65.0
 offset_right = 193.0
 offset_bottom = 31.0
-scale = Vector2(4, 4)
+scale = Vector2(4.5, 4.5)
 
 [node name="Fader" parent="CanvasLayer" unique_id=721573022 instance=ExtResource("9_2l77h")]
 visible = false

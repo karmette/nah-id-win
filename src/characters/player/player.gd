@@ -17,6 +17,7 @@ var dash_force = 1
 
 func _ready() -> void:
 	SignalBus.add_health.connect(heal)
+	SignalBus.toggle_spotlight.connect(_on_spotlight_toggled)
 
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
@@ -102,3 +103,8 @@ func die():
 	await over_vfx.animation_finished
 	SceneManager.goto_scene("res://restart_menu.tscn")
 	
+func _on_spotlight_toggled(on: bool):
+	if on:
+		cheese.use_parent_material = true
+	else:
+		cheese.use_parent_material = false
