@@ -27,7 +27,7 @@ const LEVELS: Dictionary[String, PackedScene] = {
 const ENEMIES: Dictionary[String, PackedScene] = {
 	"basic_rat":preload("uid://dqfe3qn5ji0i5"),
 	"fast_rat":preload("uid://cu0a6br33xy46"),
-	"bomb_rat":preload("uid://ddsm55b8lnrs1")
+	"bomb_rat":preload("uid://q75deiw45po4")
 }
 
 const WEAPONS: Dictionary[String, PackedScene] = {

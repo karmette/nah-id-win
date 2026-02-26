@@ -8,7 +8,6 @@
 [ext_resource type="Resource" uid="uid://dxvhrja3viy1k" path="res://modules/pickup_resource/fork_pickup.tres" id="5_wi4c7"]
 [ext_resource type="PackedScene" uid="uid://icmnq2ichhna" path="res://ui/stat_bars.tscn" id="8_70vka"]
 [ext_resource type="PackedScene" uid="uid://bbuim7ilb550q" path="res://ui/fader.tscn" id="9_2l77h"]
-[ext_resource type="PackedScene" uid="uid://q75deiw45po4" path="res://characters/enemies/bomb_rat.tscn" id="9_nqdth"]
 
 [node name="MainGame" type="Node2D" unique_id=730573980]
 y_sort_enabled = true
@@ -38,6 +37,3 @@ scale = Vector2(4.5, 4.5)
 
 [node name="Fader" parent="CanvasLayer" unique_id=721573022 instance=ExtResource("9_2l77h")]
 visible = false
-
-[node name="bomb_rat" parent="." unique_id=3685708 instance=ExtResource("9_nqdth")]
-position = Vector2(0, -171)
