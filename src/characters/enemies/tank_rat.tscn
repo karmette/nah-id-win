@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ddsm55b8lnrs1"]
 
 [ext_resource type="Script" uid="uid://dldiui6wyx3br" path="res://characters/enemies/tank_rat.gd" id="1_mlr0t"]
-[ext_resource type="Shader" path="res://characters/damage_flash.gdshader" id="2_2wpio"]
+[ext_resource type="Shader" uid="uid://dpxkjrfwngt8v" path="res://characters/damage_flash.gdshader" id="2_2wpio"]
 [ext_resource type="Texture2D" uid="uid://bu8vlebu5w35h" path="res://assets/sprites/boss_rat/boss rat.png" id="3_mlr0t"]
 [ext_resource type="Animation" uid="uid://b5jcd45e3it6r" path="res://assets/anims/take_damage.res" id="4_2wpio"]
 [ext_resource type="Texture2D" uid="uid://btm08sl4cupxg" path="res://assets/particles/hit_effect.png" id="4_xudwh"]
@@ -105,10 +105,6 @@ scale_curve = SubResource("CurveTexture_toq4n")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ggbst"]
 size = Vector2(46.58062, 52.562572)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u8tuc"]
-radius = 47.0
-height = 94.0
-
 [node name="TankRat" type="CharacterBody2D" unique_id=1223147141 groups=["enemies"]]
 collision_layer = 4
 collision_mask = 4
@@ -153,17 +149,8 @@ position = Vector2(0, 2.999998)
 rotation = 1.5861676
 shape = SubResource("RectangleShape2D_ggbst")
 
-[node name="Hitbox" type="Area2D" parent="." unique_id=1309639325]
-collision_layer = 4
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1081162921]
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_u8tuc")
-
 [node name="sfx_damaged" type="AudioStreamPlayer2D" parent="." unique_id=776112701]
 
 [node name="sfx_squeak" type="AudioStreamPlayer2D" parent="." unique_id=1776345552]
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
-[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

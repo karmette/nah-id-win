@@ -52,7 +52,7 @@ func level_2():
 	pickup.position = Vector2(0,0)
 	await SignalBus.pickup_item
 	for i in range(5):
-		begin_wave.call_deferred(4, 2, true, true, true)
+		begin_wave.call_deferred(2, 1.25, true, true, true)
 		await enemies_died
 		await get_tree().create_timer(2).timeout
 	SignalBus.fade.emit()

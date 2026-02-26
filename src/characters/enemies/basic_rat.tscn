@@ -6,7 +6,7 @@
 [ext_resource type="Animation" uid="uid://b5jcd45e3it6r" path="res://assets/anims/take_damage.res" id="4_16glv"]
 [ext_resource type="Texture2D" uid="uid://btm08sl4cupxg" path="res://assets/particles/hit_effect.png" id="4_k1tnx"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ggbst"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_16glv"]
 resource_local_to_scene = true
 shader = ExtResource("2_bg117")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
@@ -28,7 +28,7 @@ region = Rect2(192, 0, 96, 96)
 atlas = ExtResource("3_h4pp4")
 region = Rect2(288, 0, 96, 96)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ki21s"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_3g7bl"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -67,6 +67,30 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_16glv"]
 resource_name = "die"
@@ -83,7 +107,7 @@ _data = {
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.17673385), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_toq4n"]
+[sub_resource type="CurveTexture" id="CurveTexture_sjhiw"]
 curve = SubResource("Curve_ggbst")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1ohc2"]
@@ -98,7 +122,7 @@ linear_accel_min = -100.0
 linear_accel_max = -100.0
 scale_min = 1.55
 scale_max = 2.1
-scale_curve = SubResource("CurveTexture_toq4n")
+scale_curve = SubResource("CurveTexture_sjhiw")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ggbst"]
 size = Vector2(20, 34.997047)
@@ -114,12 +138,11 @@ collision_mask = 4
 script = ExtResource("1_avvud")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=2123982186]
-material = SubResource("ShaderMaterial_ggbst")
+material = SubResource("ShaderMaterial_16glv")
 position = Vector2(4, -27)
-sprite_frames = SubResource("SpriteFrames_ki21s")
+sprite_frames = SubResource("SpriteFrames_3g7bl")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.18070574
 
 [node name="ForwardRay" type="RayCast2D" parent="." unique_id=464449794]
 position = Vector2(4, -27)
@@ -132,7 +155,6 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=178788126]
-visible = false
 position = Vector2(3, 8)
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_toq4n")

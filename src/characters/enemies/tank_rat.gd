@@ -8,4 +8,3 @@ func _init():
 	max_force = 900
 	separation_weight = 4.5
 	cohesion_weight = 0.3
-

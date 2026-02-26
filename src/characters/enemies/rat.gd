@@ -10,6 +10,7 @@ extends CharacterBody2D
 @export var health = 20
 @export var knockback_force = 750
 @export var knockback_decay = 800
+@export var can_move = true
 
 var knockback_velocity: Vector2 = Vector2.ZERO
 
@@ -43,16 +44,19 @@ func _ready():
 	add_to_group("enemies")
 	player = get_tree().get_first_node_in_group("player")
 
+func shake_screen(intensity: int, time: float):
+	SignalBus.shake_camera.emit(intensity, time)
+
 func _physics_process(delta):
 	if player == null:
 		return
 	if position.distance_to(player.position) < 5:
 		near_player.emit()
 	# Apply knockback first
-	if knockback_velocity.length() > 0:
+	if knockback_velocity.length() > 0 and can_move:
 		velocity = knockback_velocity
 		knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_decay * delta)
-	else:
+	elif can_move:
 		# Normal movement logic here 
 		if not sprite_2d.is_playing():
 			sprite_2d.play()
@@ -214,7 +218,10 @@ func take_damage(amount: int, direction: Vector2, force):
 	
 func take_knockback(direction: Vector2, force:int):
 	knockback_velocity = direction * force #sets knockback
-	
+
+func stop_movement():
+	velocity = Vector2.ZERO
+
 func die():
 	var random = RandomNumberGenerator.new()
 	var chance = random.randi()%10

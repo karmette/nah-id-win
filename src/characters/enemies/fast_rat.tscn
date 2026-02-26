@@ -40,10 +40,6 @@ region = Rect2(480, 0, 96, 96)
 atlas = ExtResource("3_1c8wr")
 region = Rect2(576, 0, 96, 96)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fqoj8"]
-atlas = ExtResource("3_1c8wr")
-region = Rect2(672, 0, 96, 96)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_ki21s"]
 animations = [{
 "frames": [{
@@ -67,13 +63,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_s08sr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fqoj8")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 13.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_toq4n"]
@@ -142,7 +135,7 @@ scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_ki21s")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.18070574
+frame_progress = 0.16858616
 flip_h = true
 
 [node name="ForwardRay" type="RayCast2D" parent="." unique_id=464449794]

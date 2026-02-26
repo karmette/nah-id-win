@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://dxsiaw0683hmx" path="res://assets/sewer_set.tres" id="1_admn5"]
 [ext_resource type="Script" uid="uid://bw3oymq4c4rlq" path="res://levels/stage_sewers.gd" id="1_l6x7u"]
-[ext_resource type="Texture2D" uid="uid://btm08sl4cupxg" path="res://assets/particles/hit_effect.png" id="2_ephjm"]
+[ext_resource type="Texture2D" uid="uid://dg3webv5a8yhk" path="res://assets/particles/spotlight.png" id="3_l6x7u"]
 
 [node name="stage_sewers" type="Node2D" unique_id=594918429]
 z_index = -4
@@ -22,9 +22,9 @@ offset_bottom = 2098.0
 color = Color(0, 0, 0, 1)
 
 [node name="CentralLight" type="PointLight2D" parent="." unique_id=1437429452]
-scale = Vector2(13.714285, 14.142858)
-energy = 0.6
-texture = ExtResource("2_ephjm")
+scale = Vector2(1.390625, 1.4340826)
+energy = 1.4
+texture = ExtResource("3_l6x7u")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=915878787]
 color = Color(0, 0, 0, 1)
