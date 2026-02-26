@@ -10,10 +10,11 @@ config_version=5
 
 [application]
 
-config/name="nah-id-win"
+config/name="ULTRACHEESE"
+config/description="for chillennium 2026"
 run/main_scene="uid://br8kyglkrqbfw"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://6f867isyu25s"
 
 [autoload]
 
@@ -122,3 +123,4 @@ dash={
 
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
+textures/vram_compression/import_etc2_astc=true
